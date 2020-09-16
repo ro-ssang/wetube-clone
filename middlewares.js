@@ -1,6 +1,6 @@
 import routes from "./routes";
 
-export const localsMiddleware = (req, res, next) => {
+const localsMiddleware = (req, res, next) => {
   res.locals.siteName = "WeTube";
   res.locals.routes = routes;
   res.locals.user = {
@@ -9,3 +9,5 @@ export const localsMiddleware = (req, res, next) => {
   };
   next();
 };
+
+export default localsMiddleware;
