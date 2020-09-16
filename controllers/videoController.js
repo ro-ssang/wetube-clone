@@ -1,24 +1,24 @@
 // Home
 export const getHome = (req, res) => {
-  res.send("Home Page");
+  res.render("home", { title: "Home" });
 };
 
 // Search
 export const getSearch = (req, res) => {
-  res.send("Search Page");
+  res.render("search", { title: "Search" });
 };
 
 // Video Detail
 export const getVideoDetail = (req, res) => {
-  res.send("VideoDetail");
+  res.render("videoDetail", { title: "Video Detail" });
 };
 
 // Upload
 export const getUpload = (req, res) => {
-  res.send("Upload");
+  res.render("upload", { title: "Upload" });
 };
 
 // Edit Video
 export const getEditVideo = (req, res) => {
-  res.send("EditVideo");
+  res.render("editVideo", { title: "Edit Video" });
 };
