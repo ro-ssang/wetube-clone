@@ -1,4 +1,8 @@
 extends layouts/main
 
 block content
-    h1 Login
+    form(action=routes.user, method="post")
+        input(type="email", name="email", placeholder="Email")
+        input(type="password", name="password", placeholder="Password")
+        input(type="submit", value="Login")
+    include partials/socialLogin

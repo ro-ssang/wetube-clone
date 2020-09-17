@@ -22,3 +22,8 @@ export const getUpload = (req, res) => {
 export const getEditVideo = (req, res) => {
   res.render("editVideo", { title: "Edit Video" });
 };
+
+// Delete Video
+export const getDeleteVideo = (req, res) => {
+  res.render("deleteVideo", { title: "deleteVideo" });
+};

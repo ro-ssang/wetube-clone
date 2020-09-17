@@ -1,5 +1,6 @@
 import express from "express";
 import {
+  getDeleteVideo,
   getEditVideo,
   getUpload,
   getVideoDetail,
@@ -16,5 +17,8 @@ videoRouter.get(routes.videoDetail, getVideoDetail);
 
 // Edit Video
 videoRouter.get(routes.editVideo, getEditVideo);
+
+// Delete Video
+videoRouter.get(routes.deleteVideo, getDeleteVideo);
 
 export default videoRouter;

@@ -1,4 +1,9 @@
 extends layouts/main
 
 block content
-    h1 Upload
+    form(action=`/video${routes.upload}`, method="post")
+        label(for="videoFile") Video File
+        input(type="file", id="videoFile" name="videoFile", accept="video/*")
+        input(type="text", name="title", placeholder="Title")
+        textarea(name="description", placeholder="Description")
+        input(type="submit", value="Submit")

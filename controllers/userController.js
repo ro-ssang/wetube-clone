@@ -1,7 +1,6 @@
 // Login
 export const getLogin = (req, res) => {
   res.render("login", { title: "Login" });
-  console.log("hi");
 };
 
 // Logout
