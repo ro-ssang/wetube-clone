@@ -1,7 +1,23 @@
 import passport from "passport";
+import passportGithub from "passport-github";
+import { githubCallback } from "./controllers/userController";
 import User from "./models/User";
+import routes from "./routes";
+
+const GitHubStrategy = passportGithub.Strategy;
 
 passport.use(User.createStrategy());
+passport.use(
+  new GitHubStrategy(
+    {
+      clientID: process.env.GITHUB_CLIENT_ID,
+      clientSecret: process.env.GITHUB_CLIENT_SECRET,
+      callbackURL: `http://localhost:${process.env.PORT}${routes.githubCallback}`,
+      scope: "user:email",
+    },
+    githubCallback
+  )
+);
 
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());

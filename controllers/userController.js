@@ -12,6 +12,34 @@ export const postLogin = passport.authenticate("local", {
   failureRedirect: routes.login,
 });
 
+// Github Login
+export const getGihubLogin = passport.authenticate("github");
+
+export const postGithubLogin = (req, res) => res.redirect(routes.home);
+
+export const getGihubCallback = passport.authenticate("github", {
+  failureRedirect: routes.login,
+});
+
+export const githubCallback = async (_, __, profile, cb) => {
+  const {
+    _json: { id: githubId, avatar_url: avatarUrl, name },
+  } = profile;
+  const email = profile.emails.filter((item) => item.primary)[0].value;
+  try {
+    const user = await User.findOne({ email });
+    if (user) {
+      user.githubId = githubId;
+      user.save();
+      return cb(null, user);
+    }
+    const newUser = await User.create({ name, email, avatarUrl, githubId });
+    return cb(null, newUser);
+  } catch (error) {
+    return cb(error);
+  }
+};
+
 // Logout
 export const getLogout = (req, res) => {
   req.logout();

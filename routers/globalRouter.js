@@ -1,8 +1,11 @@
 import express from "express";
 import {
+  getGihubLogin,
+  getGihubCallback,
   getJoin,
   getLogin,
   getLogout,
+  postGithubLogin,
   postJoin,
   postLogin,
 } from "../controllers/userController";
@@ -17,6 +20,10 @@ globalRouter.get(routes.home, getHome);
 // Login
 globalRouter.get(routes.login, getLogin);
 globalRouter.post(routes.login, postLogin);
+
+// Github Login
+globalRouter.get(routes.github, getGihubLogin);
+globalRouter.get(routes.githubCallback, getGihubCallback, postGithubLogin);
 
 // Logout
 globalRouter.get(routes.logout, getLogout);
