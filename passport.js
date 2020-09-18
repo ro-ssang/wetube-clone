@@ -1,12 +1,17 @@
 import passport from "passport";
 import passportGithub from "passport-github";
-import { githubCallback } from "./controllers/userController";
+import passportGoogle from "passport-google-oauth20";
+import { githubCallback, GoogleCallback } from "./controllers/userController";
 import User from "./models/User";
 import routes from "./routes";
 
 const GitHubStrategy = passportGithub.Strategy;
+const GoogleStrategy = passportGoogle.Strategy;
 
+// Local login
 passport.use(User.createStrategy());
+
+// Github Login
 passport.use(
   new GitHubStrategy(
     {
@@ -16,6 +21,18 @@ passport.use(
       scope: "user:email",
     },
     githubCallback
+  )
+);
+
+// Google Login
+passport.use(
+  new GoogleStrategy(
+    {
+      clientID: process.env.GOOGLE_CLIENT_ID,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+      callbackURL: `http://localhost:${process.env.PORT}${routes.googleCallback}`,
+    },
+    GoogleCallback
   )
 );
 

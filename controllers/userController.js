@@ -40,6 +40,35 @@ export const githubCallback = async (_, __, profile, cb) => {
   }
 };
 
+// Google Login
+export const getGoogleLogin = passport.authenticate("google", {
+  scope: ["profile", "email"],
+});
+
+export const postGoogleLogin = (req, res) => res.redirect(routes.home);
+
+export const getGoogleCallback = passport.authenticate("google", {
+  failureRedirect: routes.login,
+});
+
+export const GoogleCallback = async (_, __, profile, cb) => {
+  const {
+    _json: { sub: googleId, name, picture: avatarUrl, email },
+  } = profile;
+  try {
+    const user = await User.findOne({ email });
+    if (user) {
+      user.googleId = googleId;
+      user.save();
+      return cb(null, user);
+    }
+    const newUser = await User.create({ name, email, avatarUrl, googleId });
+    return cb(null, newUser);
+  } catch (error) {
+    return cb(error);
+  }
+};
+
 // Logout
 export const getLogout = (req, res) => {
   req.logout();
