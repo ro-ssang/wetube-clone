@@ -13,8 +13,17 @@ export const getSearch = (req, res) => {
 };
 
 // Video Detail
-export const getVideoDetail = (req, res) => {
-  res.render("videoDetail", { title: "Video Detail" });
+export const getVideoDetail = async (req, res) => {
+  const {
+    params: { id },
+  } = req;
+  try {
+    const video = await Video.findById(id);
+    res.render("videoDetail", { title: "Video Detail", video });
+  } catch (error) {
+    console.log(error);
+    res.redirect(routes.home);
+  }
 };
 
 // Upload
@@ -28,10 +37,10 @@ export const postUpload = async (req, res) => {
     file: { path },
   } = req;
   try {
-    await Video.create({ videoFile: path, title, description });
+    const newVideo = await Video.create({ videoUrl: path, title, description });
+    res.redirect(routes.videoDetail(newVideo.id));
   } catch (error) {
     console.log(error);
-  } finally {
     res.redirect(routes.home);
   }
 };

@@ -1,4 +1,6 @@
 extends layouts/main
 
 block content
-    h1 Video Detail
+    video(src=`/${video.videoUrl}` controls)
+    h2=video.title
+    p=video.description

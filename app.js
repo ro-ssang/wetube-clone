@@ -7,7 +7,7 @@ import MongoStore from "connect-mongo";
 import mongoose from "mongoose";
 import bodyParser from "body-parser";
 import passport from "passport";
-import localsMiddleware from "./middlewares";
+import { localsMiddleware } from "./middlewares";
 import globalRouter from "./routers/globalRouter";
 import userRouter from "./routers/userRouter";
 import videoRouter from "./routers/videoRouter";
@@ -39,7 +39,7 @@ app.use(passport.session());
 app.use(localsMiddleware);
 
 app.use(routes.home, globalRouter);
-app.use(routes.user, userRouter);
-app.use(routes.video, videoRouter);
+app.use(routes.users, userRouter);
+app.use(routes.videos, videoRouter);
 
 export default app;
