@@ -101,8 +101,19 @@ export const postJoin = async (req, res, next) => {
 };
 
 // User Detail
-export const getUserDetail = (req, res) => {
-  res.render("userDetail", { title: "User Detail" });
+export const getUserDetail = async (req, res) => {
+  const {
+    params: { id: userId },
+  } = req;
+  try {
+    const searchingUser = await User.findById(userId);
+    console.log(searchingUser);
+    console.log(req.user);
+    res.render("userDetail", { title: "User Detail", user: searchingUser });
+  } catch (error) {
+    console.log(error);
+    res.redirect(routes.home);
+  }
 };
 
 // Edit Profile

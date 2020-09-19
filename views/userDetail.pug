@@ -1,4 +1,8 @@
 extends layouts/main
 
 block content
-    h1 User Detail
+    img(src=user.avatarUrl)
+    h3=user.name
+    if loggedUser.id === user.id
+        a(href=routes.editProfile(user.id))
+            button Edit Profile

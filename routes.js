@@ -33,8 +33,18 @@ const routes = {
   join: JOIN,
   search: SEARCH,
   users: USERS,
-  userDetail: USER_DETAIL,
-  editProfile: EDIT_PROFILE,
+  userDetail: (id) => {
+    if (id) {
+      return `${USERS}/${id}`;
+    }
+    return USER_DETAIL;
+  },
+  editProfile: (id) => {
+    if (id) {
+      return `${USERS}/${id}/edit-profile`;
+    }
+    return EDIT_PROFILE;
+  },
   changePassword: CHANGE_PASSWORD,
   videos: VIDEOS,
   videoDetail: (id) => {

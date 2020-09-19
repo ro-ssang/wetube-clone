@@ -15,10 +15,10 @@ export const getSearch = (req, res) => {
 // Video Detail
 export const getVideoDetail = async (req, res) => {
   const {
-    params: { id },
+    params: { id: videoId },
   } = req;
   try {
-    const video = await Video.findById(id);
+    const video = await Video.findById(videoId);
     res.render("videoDetail", { title: "Video Detail", video });
   } catch (error) {
     console.log(error);
@@ -48,10 +48,10 @@ export const postUpload = async (req, res) => {
 // Edit Video
 export const getEditVideo = async (req, res) => {
   const {
-    params: { id },
+    params: { id: videoId },
   } = req;
   try {
-    const video = await Video.findById(id);
+    const video = await Video.findById(videoId);
     res.render("editVideo", { title: "Edit Video", video });
   } catch (error) {
     console.log(error);
@@ -61,25 +61,25 @@ export const getEditVideo = async (req, res) => {
 
 export const postEditVideo = async (req, res) => {
   const {
-    params: { id },
+    params: { id: videoId },
     body: { title, description },
   } = req;
   try {
-    await Video.findByIdAndUpdate(id, { title, description });
+    await Video.findByIdAndUpdate(videoId, { title, description });
   } catch (error) {
     console.log(error);
   } finally {
-    res.redirect(routes.videoDetail(id));
+    res.redirect(routes.videoDetail(videoId));
   }
 };
 
 // Delete Video
 export const getDeleteVideo = async (req, res) => {
   const {
-    params: { id },
+    params: { id: videoId },
   } = req;
   try {
-    await Video.findByIdAndRemove(id);
+    await Video.findByIdAndRemove(videoId);
   } catch (error) {
     console.log(error);
   } finally {
