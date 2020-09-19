@@ -50,7 +50,12 @@ const routes = {
     }
     return EDIT_VIDEO;
   },
-  deleteVideo: DELETE_VIDEO,
+  deleteVideo: (id) => {
+    if (id) {
+      return `${VIDEOS}/${id}/delete-video`;
+    }
+    return DELETE_VIDEO;
+  },
   github: GITHUB,
   githubCallback: GITHUB_CALLBACK,
   google: GOOGLE,

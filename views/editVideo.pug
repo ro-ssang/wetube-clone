@@ -5,3 +5,5 @@ block content
         input(type="text", name="title", value=video.title)
         textarea(name="description")=video.description
         input(type="submit", value="Edit Video")
+    a(href=routes.deleteVideo(video._id))
+        button Delete Video
