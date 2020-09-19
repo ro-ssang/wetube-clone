@@ -1,4 +1,5 @@
 import express from "express";
+import path from "path";
 import morgan from "morgan";
 import cookieParser from "cookie-parser";
 import session from "express-session";
@@ -11,7 +12,6 @@ import globalRouter from "./routers/globalRouter";
 import userRouter from "./routers/userRouter";
 import videoRouter from "./routers/videoRouter";
 import routes from "./routes";
-
 import "./passport";
 
 const CookieStore = MongoStore(session);
@@ -20,6 +20,7 @@ const app = express();
 
 app.set("views", "./views");
 app.set("view engine", "pug");
+app.use("/uploads", express.static(path.join(__dirname, "/uploads")));
 app.use(morgan("dev"));
 app.use(cookieParser());
 app.use(

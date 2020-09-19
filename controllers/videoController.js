@@ -1,6 +1,10 @@
+import routes from "../routes";
+import Video from "../models/Video";
+
 // Home
-export const getHome = (req, res) => {
-  res.render("home", { title: "Home" });
+export const getHome = async (req, res) => {
+  const videos = await Video.find({});
+  res.render("home", { title: "Home", videos });
 };
 
 // Search
@@ -16,6 +20,20 @@ export const getVideoDetail = (req, res) => {
 // Upload
 export const getUpload = (req, res) => {
   res.render("upload", { title: "Upload" });
+};
+
+export const postUpload = async (req, res) => {
+  const {
+    body: { title, description },
+    file: { path },
+  } = req;
+  try {
+    await Video.create({ videoFile: path, title, description });
+  } catch (error) {
+    console.log(error);
+  } finally {
+    res.redirect(routes.home);
+  }
 };
 
 // Edit Video
