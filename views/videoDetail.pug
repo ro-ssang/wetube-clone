@@ -2,5 +2,7 @@ extends layouts/main
 
 block content
     video(src=`/${video.videoUrl}` controls)
+    a(href=`${routes.editVideo(video._id)}`)
+        button Edit Video
     h2=video.title
     p=video.description

@@ -44,7 +44,12 @@ const routes = {
     return VIDEO_DETAIL;
   },
   upload: UPLOAD,
-  editVideo: EDIT_VIDEO,
+  editVideo: (id) => {
+    if (id) {
+      return `${VIDEOS}/${id}/edit-video`;
+    }
+    return EDIT_VIDEO;
+  },
   deleteVideo: DELETE_VIDEO,
   github: GITHUB,
   githubCallback: GITHUB_CALLBACK,
