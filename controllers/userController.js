@@ -107,8 +107,6 @@ export const getUserDetail = async (req, res) => {
   } = req;
   try {
     const searchingUser = await User.findById(userId);
-    console.log(searchingUser);
-    console.log(req.user);
     res.render("userDetail", { title: "User Detail", user: searchingUser });
   } catch (error) {
     console.log(error);
@@ -119,6 +117,25 @@ export const getUserDetail = async (req, res) => {
 // Edit Profile
 export const getEditProfile = (req, res) => {
   res.render("editProfile", { title: "Edit Profile" });
+};
+
+export const postEditProfile = async (req, res) => {
+  const {
+    params: { id },
+    body: { name },
+    file,
+  } = req;
+  try {
+    if (file) {
+      await User.findByIdAndUpdate(id, { name, avatarUrl: `/${file.path}` });
+    } else {
+      await User.findByIdAndUpdate(id, { name });
+    }
+  } catch (error) {
+    console.log(error);
+  } finally {
+    res.redirect(routes.userDetail(id));
+  }
 };
 
 // Change Password

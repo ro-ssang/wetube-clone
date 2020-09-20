@@ -1,4 +1,8 @@
 extends layouts/main
 
 block content
-    h1 Edit Profile
+    form(action=routes.editProfile(loggedUser.id), method="post", enctype="multipart/form-data")
+        label(for="videoFile") Avatar Image
+        input(type="file", id="avatarFile" name="avatarFile", accept="image/*")
+        input(name="name", placeholder="name", value=loggedUser.name)
+        input(type="submit", value="Edit Profile")
