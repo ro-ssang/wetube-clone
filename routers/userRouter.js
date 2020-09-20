@@ -3,6 +3,7 @@ import {
   getChangePassword,
   getEditProfile,
   getUserDetail,
+  postChangePassword,
   postEditProfile,
 } from "../controllers/userController";
 import { uploadAvatar } from "../middlewares";
@@ -18,6 +19,7 @@ userRouter.get(routes.editProfile(), getEditProfile);
 userRouter.post(routes.editProfile(), uploadAvatar, postEditProfile);
 
 // Change Password
-userRouter.get(routes.changePassword, getChangePassword);
+userRouter.get(routes.changePassword(), getChangePassword);
+userRouter.post(routes.changePassword(), postChangePassword);
 
 export default userRouter;

@@ -6,3 +6,5 @@ block content
     if loggedUser.id === user.id
         a(href=routes.editProfile(user.id))
             button Edit Profile
+        a(href=routes.changePassword(loggedUser.id))
+            button Change Password

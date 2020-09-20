@@ -45,7 +45,12 @@ const routes = {
     }
     return EDIT_PROFILE;
   },
-  changePassword: CHANGE_PASSWORD,
+  changePassword: (id) => {
+    if (id) {
+      return `${USERS}/${id}/change-password`;
+    }
+    return CHANGE_PASSWORD;
+  },
   videos: VIDEOS,
   videoDetail: (id) => {
     if (id) {
