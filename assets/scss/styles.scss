@@ -1,0 +1,83 @@
+@import "./config/reset";
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap");
+@import "./config/variables";
+
+// Partials
+@import "./partials/header";
+
+* {
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+  color: $blackDarkColor;
+}
+
+input {
+  border: 1px solid $greyLightColor;
+}
+
+body {
+  font-family: "Noto Sans KR", sans-serif;
+  background-color: $whiteDarkColor;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 440px;
+  .input-container {
+    width: 100%;
+    position: relative;
+    span {
+      position: absolute;
+      top: $paddingSmall;
+      font-size: $fontExtraSmall;
+      color: $greyLightColor;
+      transition: all 0.15s ease-in-out;
+      &:first-child {
+        font-size: $fontBasic;
+        top: $paddingLarge;
+        left: $paddingSmall;
+      }
+      &:nth-child(2) {
+        display: none;
+        right: $paddingSmall;
+      }
+      &:first-child.focus {
+        top: $paddingSmall;
+        font-size: $fontExtraSmall;
+      }
+      &:nth-child(2).required {
+        display: block;
+        color: $redColor;
+      }
+    }
+  }
+  input {
+    width: 100%;
+    padding: $padding3x $paddingSmall;
+    border-radius: 5px;
+    &[type="submit"] {
+      padding: $paddingMedium;
+      background-color: $blueColor;
+      color: $whiteLightColor;
+      border: none;
+    }
+    &:not([type="submit"]) {
+      padding-bottom: $paddingExtraSmall;
+      margin-bottom: $marginLarge;
+    }
+    &.required {
+      border-color: $redColor;
+    }
+  }
+}
