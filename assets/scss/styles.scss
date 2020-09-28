@@ -4,6 +4,7 @@
 
 // Partials
 @import "./partials/header";
+@import "./partials/form";
 
 * {
   box-sizing: border-box;
@@ -18,6 +19,14 @@ input {
   border: 1px solid $greyLightColor;
 }
 
+button {
+  padding: $paddingMedium;
+  border: none;
+  background-color: $greyLightColor;
+  border-radius: 5px;
+  color: $blackDarkColor;
+}
+
 body {
   font-family: "Noto Sans KR", sans-serif;
   background-color: $whiteDarkColor;
@@ -29,55 +38,12 @@ main {
   align-items: center;
 }
 
-.form-container {
+.social-login {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  justify-content: space-between;
   width: 440px;
-  .input-container {
-    width: 100%;
-    position: relative;
-    span {
-      position: absolute;
-      top: $paddingSmall;
-      font-size: $fontExtraSmall;
-      color: $greyLightColor;
-      transition: all 0.15s ease-in-out;
-      &:first-child {
-        font-size: $fontBasic;
-        top: $paddingLarge;
-        left: $paddingSmall;
-      }
-      &:nth-child(2) {
-        display: none;
-        right: $paddingSmall;
-      }
-      &:first-child.focus {
-        top: $paddingSmall;
-        font-size: $fontExtraSmall;
-      }
-      &:nth-child(2).required {
-        display: block;
-        color: $redColor;
-      }
-    }
-  }
-  input {
-    width: 100%;
-    padding: $padding3x $paddingSmall;
-    border-radius: 5px;
-    &[type="submit"] {
-      padding: $paddingMedium;
-      background-color: $blueColor;
-      color: $whiteLightColor;
-      border: none;
-    }
-    &:not([type="submit"]) {
-      padding-bottom: $paddingExtraSmall;
-      margin-bottom: $marginLarge;
-    }
-    &.required {
-      border-color: $redColor;
-    }
+  margin-top: $marginLarge;
+  i {
+    margin-right: $marginSmall;
   }
 }
