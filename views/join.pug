@@ -1,22 +1,24 @@
 extends layouts/main
 
 block content
-    form.form-container(action=routes.join, method="post")
-        .input-container
-            span.inputName Name
-            span.inputMsg Required
-            input(type="text", name="name")
-        .input-container
-            span.inputName Email
-            span.inputMsg Required
-            input(type="email", name="email")
-        .input-container
-            span.inputName Password
-            span.inputMsg Required
-            input(type="password", name="password")
-        .input-container
-            span.inputName Verify Password
-            span.inputMsg Required
-            input(type="password", name="password1")
-        input(type="submit", value="Join")
-    include partials/socialLogin
+    .form-container
+        h3.title=title
+        form(action=routes.join, method="post")
+            .input-container
+                label(for="name") Name
+                span Required
+                input.input(type="text", name="name", id="name")
+            .input-container
+                label(for="email") Email
+                span Required
+                input.input(type="email", name="email", id="email")
+            .input-container
+                label(for="password") Password
+                span Required
+                input.input(type="password", name="password", id="password")
+            .input-container
+                label(for="password1") Verify Password
+                span Required
+                input.input(type="password", name="password1", id="password1")
+            input(type="submit", value=`${title}`)
+        include partials/socialLogin

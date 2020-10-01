@@ -1,0 +1,24 @@
+nav {
+  background-color: $greyDarkColor;
+  padding: $paddingHorizontal 0;
+  width: 240px;
+  .title {
+    font-size: $fontSmall;
+    margin-left: $paddingHorizontal;
+    margin-bottom: $marginSmall;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+  .menu {
+    li {
+      padding: $padding 0;
+      i {
+        margin-left: $paddingHorizontal;
+        margin-right: 8px;
+      }
+    }
+  }
+  footer {
+    margin-left: $paddingHorizontal;
+  }
+}

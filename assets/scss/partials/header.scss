@@ -1,32 +1,40 @@
-.header {
+header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: $paddingLarge;
-  background-color: $whiteLightColor;
+  background-color: $blackColor;
+  padding: $padding $paddingHorizontal;
   .logo {
-    font-size: $fontLarge;
-    a {
-      display: flex;
-      align-items: center;
-      i {
-        color: $redColor;
-        font-size: $font4x;
-        margin-right: $marginExtraSmall;
-      }
+    i {
+      font-size: $font2x;
+      margin-right: $marginSmall;
+      color: $redColor;
+    }
+    span {
+      font-size: $fontLarge;
     }
   }
-  nav {
-    ul {
-      display: flex;
-      li {
-        padding: $paddingSmall;
-        text-transform: uppercase;
-        &:hover {
-          background-color: $whiteDarkColor;
-          border-radius: 4px;
-        }
-      }
+  form {
+    position: relative;
+    width: 50%;
+    i {
+      position: absolute;
+      top: 6px;
+      left: 8px;
+      font-size: $fontLarge;
+      color: $greyLightColor;
+    }
+    input {
+      width: 100%;
+      padding: calc(#{$padding}/ 2);
+      padding-left: calc(#{$padding}* 3);
+      font-size: 18px;
+    }
+  }
+  ul {
+    display: flex;
+    li {
+      border-radius: 4px;
     }
   }
 }

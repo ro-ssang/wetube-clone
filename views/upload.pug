@@ -1,9 +1,19 @@
 extends layouts/main
 
 block content
-    form(action=`${routes.videos}${routes.upload}`, method="post", enctype="multipart/form-data")
-        label(for="videoFile") Video File
-        input(type="file", id="videoFile" name="videoFile", accept="video/*")
-        input(type="text", name="title", placeholder="Title")
-        textarea(name="description", placeholder="Description")
-        input(type="submit", value="Upload")
+    .form-container
+        h3.title=title
+        form(action=`${routes.videos}${routes.upload}`, method="post", enctype="multipart/form-data")
+            .input-container.file
+                label(for="videoFile") Video File
+                span Required
+                input.input(type="file", id="videoFile" name="videoFile", accept="video/*")
+            .input-container
+                label(for="title") Title
+                span Required
+                input.input(type="text", name="title", id="title")
+            .input-container
+                label(for="description") Description
+                span Required
+                textarea.input(name="description", id="description")
+            input(type="submit", value="Upload")

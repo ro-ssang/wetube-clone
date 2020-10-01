@@ -1,8 +1,15 @@
 extends layouts/main
 
 block content
-    form(action=routes.editProfile(loggedUser.id), method="post", enctype="multipart/form-data")
-        label(for="videoFile") Avatar Image
-        input(type="file", id="avatarFile" name="avatarFile", accept="image/*")
-        input(name="name", placeholder="name", value=loggedUser.name)
-        input(type="submit", value="Edit Profile")
+    .form-container
+        h3.title=title
+        form(action=routes.editProfile(loggedUser.id), method="post", enctype="multipart/form-data")
+            .input-container.file
+                label(for="avatarFile") Avatar Image
+                span Required
+                input.input(type="file", id="avatarFile" name="avatarFile", accept="image/*")
+            .input-container
+                label(for="name") Name
+                span Required
+                input.input(name="name", value=loggedUser.name, id="name")
+            input(type="submit", value="Edit Profile")

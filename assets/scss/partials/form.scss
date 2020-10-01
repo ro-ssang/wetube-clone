@@ -1,52 +1,94 @@
 .form-container {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  width: 440px;
-  .input-container {
-    width: 100%;
-    position: relative;
-    span {
-      position: absolute;
-      top: $paddingSmall;
-      font-size: $fontExtraSmall;
-      color: $greyLightColor;
-      transition: all 0.15s ease-in-out;
-      &:first-child {
-        font-size: $fontBasic;
-        top: $paddingLarge;
-        left: $paddingSmall;
+  width: $inputWidth;
+  .title {
+    font-size: $font3x;
+    margin-bottom: $margin2x;
+  }
+  form {
+    margin-bottom: $margin2x;
+    .input-container {
+      position: relative;
+      margin-bottom: $padding;
+      label,
+      span {
+        position: absolute;
+        &.active {
+          top: $marginSmall;
+          font-size: $fontMicro;
+          color: $greyDarkColor;
+          transition: all 0.1s ease-in-out;
+        }
       }
-      &:nth-child(2) {
+      label {
+        left: $inputPaddingHorizontal;
+        top: 15.5px;
+        font-size: $fontMedium;
+        color: $greyLightColor;
+        &.active {
+          color: $greyDarkColor;
+        }
+      }
+      span {
+        right: $inputPaddingHorizontal;
         display: none;
-        right: $paddingSmall;
+        &.active {
+          color: $redColor;
+          display: block;
+        }
       }
-      &:first-child.focus {
-        top: $paddingSmall;
-        font-size: $fontExtraSmall;
+      input,
+      textarea {
+        padding: $inputPaddingVertical $inputPaddingHorizontal;
+        padding-bottom: $inputPaddingBottom;
+        font-size: $fontMedium;
       }
-      &:nth-child(2).required {
-        display: block;
-        color: $redColor;
+      textarea {
+        height: 400px;
+      }
+      &.file {
+        label {
+          top: $marginSmall;
+          font-size: $fontMicro;
+          color: $greyDarkColor;
+        }
+        input {
+          font-size: $fontSmall;
+          color: $blackColor;
+        }
+      }
+    }
+    input[type="submit"] {
+      height: $inputHeight;
+      font-size: $fontMedium;
+      color: $blackColor;
+      background-color: $greyLightColor;
+    }
+  }
+  .social-login {
+    display: flex;
+    justify-content: space-between;
+    a {
+      width: 48%;
+      button {
+        height: $inputHeight;
+        font-size: $fontSmall;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        i {
+          font-size: $fontMedium;
+          margin-right: $marginSmall;
+        }
       }
     }
   }
-  input {
-    width: 100%;
-    padding: $padding3x $paddingSmall;
-    border-radius: 5px;
-    &[type="submit"] {
-      padding: $paddingMedium;
-      background-color: $blueColor;
-      color: $whiteLightColor;
-      border: none;
-    }
-    &:not([type="submit"]) {
-      padding-bottom: $paddingExtraSmall;
-      margin-bottom: $marginLarge;
-    }
-    &.required {
-      border-color: $redColor;
-    }
+  button {
+    height: $inputHeight;
+    font-size: $fontMedium;
+    color: $whiteLightColor;
+    background-color: $greyDarkColor;
+    border-radius: 4px;
   }
 }

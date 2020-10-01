@@ -1,21 +1,21 @@
-header.header
+header
     .logo
         a(href=routes.home)
             i.fab.fa-youtube
             span #{siteName}
     form.search-form(action=routes.search, method="get")
-            input(type="text", name="search_query", placeholder="Search videos...")
-    nav
-        ul
-            if !loggedUser
-                li
-                    a(href=routes.join) Join
-                li
-                    a(href=routes.login) Login
-            else
-                li
-                    a(href=`${routes.videos}${routes.upload}`) Upload
-                li
-                    a(href=`${routes.userDetail(loggedUser.id)}`) Profile
-                li
-                    a(href=routes.logout) Logout
+        i.fas.fa-search
+        input(type="text", name="search_query", placeholder="Search videos...")
+    ul
+        if !loggedUser
+            li
+                a(href=routes.join) Join
+            li
+                a(href=routes.login) Login
+        else
+            li
+                a(href=`${routes.videos}${routes.upload}`) Upload
+            li
+                a(href=`${routes.userDetail(loggedUser.id)}`) Profile
+            li
+                a(href=routes.logout) Logout
