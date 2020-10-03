@@ -1,8 +1,25 @@
 extends layouts/main
+include mixins/userBlock
 
 block content
-    video(src=`/${video.videoUrl}` controls)
-    a(href=`${routes.editVideo(video._id)}`)
-        button Edit Video
-    h2=video.title
-    p=video.description
+    .video-detail
+        video(src=`/${video.videoUrl}` controls)
+        .video-info
+            .video-info__column
+                h2=video.title
+                a(href=`${routes.editVideo(video._id)}`)
+                    button Edit Video
+            .video-info__column
+                span 1M views &bullet; #{video.createdAt}
+                .action-btns
+                    button
+                        i.fas.fa-thumbs-up
+                        span 1K
+                    button
+                        i.fas.fa-thumbs-down
+                        span 0
+        +userBlock({
+            avatarUrl: video.creator.avatarUrl,
+            name: video.creator.name,
+            description: video.description
+        })

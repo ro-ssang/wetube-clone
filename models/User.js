@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import mongoose, { Schema } from "mongoose";
 import passportLocalMongoose from "passport-local-mongoose";
 
 const UserSchema = new mongoose.Schema({
@@ -11,6 +11,12 @@ const UserSchema = new mongoose.Schema({
     type: Date,
     default: Date.now,
   },
+  videos: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Video",
+    },
+  ],
 });
 
 UserSchema.plugin(passportLocalMongoose, { usernameField: "email" });

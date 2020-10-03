@@ -47,7 +47,7 @@ textarea {
 
 .navAndMain {
   display: flex;
-  height: 100vh;
+  min-height: 100vh;
   main {
     width: 100%;
     background-color: $greyColor;

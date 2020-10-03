@@ -16,11 +16,15 @@ $font2x: 30px;
 $font3x: 48px;
 
 // Padding sizes
+$paddingSmall: 10px;
 $padding: 14px;
+$paddingMedium: 24px;
 $paddingHorizontal: 30px;
 
 // Margin sizes
 $marginSmall: 4px;
+$marginMedium: 12px;
+$marginLarge: 20px;
 $margin2x: 30px;
 
 // Input sizes
@@ -30,3 +34,7 @@ $inputMargin: 14px;
 $inputPaddingVertical: 24px;
 $inputPaddingHorizontal: 12px;
 $inputPaddingBottom: 4px;
+
+// Avatar sizes
+$avatarWidth: 46px;
+$avatarHeight: 46px;

@@ -1,0 +1,10 @@
+mixin userBlock(user = {})
+    .user-block
+        .user-block__column
+            img(src=`${user.avatarUrl}`)
+            .user-info
+                h4=user.name
+                span 1M subscribers
+        .user-block__column
+            p=user.description
+            span=user.comment
