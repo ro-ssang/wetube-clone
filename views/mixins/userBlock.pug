@@ -7,7 +7,10 @@ mixin userBlock(user = {})
                     h4=user.name
                     span 1M subscribers
             .user-block__btns
-                button Subscribe
+                if (subscribe)
+                    button.active Subscribing
+                else
+                    button Subscribe
         .user-block__column
             p=user.description
             span=user.comment

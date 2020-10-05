@@ -23,7 +23,13 @@ export const getVideoDetail = async (req, res) => {
     const video = await Video.findById(videoId).populate("creator");
     const user = await User.findById(userId);
     const like = user.likeVideos.includes(videoId);
-    res.render("videoDetail", { title: "Video Detail", video, like });
+    const subscribe = user.subscribe.includes(video.creator.id);
+    res.render("videoDetail", {
+      title: "Video Detail",
+      video,
+      like,
+      subscribe,
+    });
   } catch (error) {
     console.log(error);
     res.redirect(routes.home);

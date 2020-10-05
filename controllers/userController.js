@@ -1,6 +1,7 @@
 import passport from "passport";
 import routes from "../routes";
 import User from "../models/User";
+import Video from "../models/Video";
 
 // Login
 export const getLogin = (req, res) => {
@@ -161,5 +162,52 @@ export const postChangePassword = async (req, res) => {
     console.log(error);
     res.status(400);
     res.redirect(routes.changePassword(id));
+  }
+};
+
+// Subscribe
+export const postSubscribe = async (req, res) => {
+  const {
+    params: { id: videoId },
+    user: { id: userId },
+  } = req;
+  try {
+    const video = await Video.findById(videoId).populate("creator");
+    const loggedUser = await User.findById(userId);
+    video.creator.subscribers.push(userId);
+    video.creator.save();
+    loggedUser.subscribe.push(video.creator.id);
+    loggedUser.save();
+    res.status(200);
+  } catch (error) {
+    console.log(error);
+    res.status(400);
+  } finally {
+    res.end();
+  }
+};
+
+export const postCancel = async (req, res) => {
+  const {
+    params: { id: videoId },
+    user: { id: userId },
+  } = req;
+  try {
+    const video = await Video.findById(videoId).populate("creator");
+    const loggedUser = await User.findById(userId);
+    video.creator.subscribers = video.creator.subscribers.filter((item) => {
+      return item.toString() !== userId;
+    });
+    video.creator.save();
+    loggedUser.subscribe = loggedUser.subscribe.filter((item) => {
+      return item.toString() !== video.creator.id;
+    });
+    loggedUser.save();
+    res.status(200);
+  } catch (error) {
+    console.log(error);
+    res.status(400);
+  } finally {
+    res.end();
   }
 };

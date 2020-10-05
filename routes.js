@@ -30,6 +30,8 @@ const GOOGLE_CALLBACK = "/auth/google/callback";
 const API = "/api";
 const REGISTER_LIKE = "/:id/like-up";
 const ERASE_LIKE = "/:id/like-down";
+const SUBSCRIBE = "/:id/subscribe";
+const CANCEL = "/:id/cancel";
 
 const routes = {
   home: HOME,
@@ -83,6 +85,8 @@ const routes = {
   api: API,
   registerLike: REGISTER_LIKE,
   eraseLike: ERASE_LIKE,
+  subscribe: SUBSCRIBE,
+  cancel: CANCEL,
 };
 
 export default routes;

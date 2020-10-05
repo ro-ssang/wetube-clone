@@ -32,6 +32,11 @@
         button {
           padding: $paddingSmall;
           text-transform: uppercase;
+          color: $whiteColor;
+          background-color: $redColor;
+          &.active {
+            background-color: $greyLightColor;
+          }
         }
       }
     }
