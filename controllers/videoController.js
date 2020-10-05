@@ -1,5 +1,6 @@
 import routes from "../routes";
 import Video from "../models/Video";
+import User from "../models/User";
 
 // Home
 export const getHome = async (req, res) => {
@@ -16,11 +17,13 @@ export const getSearch = (req, res) => {
 export const getVideoDetail = async (req, res) => {
   const {
     params: { id: videoId },
+    user: { id: userId },
   } = req;
   try {
     const video = await Video.findById(videoId).populate("creator");
-    console.log(video);
-    res.render("videoDetail", { title: "Video Detail", video });
+    const user = await User.findById(userId);
+    const like = user.likeVideos.includes(videoId);
+    res.render("videoDetail", { title: "Video Detail", video, like });
   } catch (error) {
     console.log(error);
     res.redirect(routes.home);
@@ -85,12 +88,62 @@ export const postEditVideo = async (req, res) => {
 export const getDeleteVideo = async (req, res) => {
   const {
     params: { id: videoId },
+    user: { id: userId },
   } = req;
   try {
+    const user = await User.findById(userId);
     await Video.findByIdAndRemove(videoId);
+    user.videos = user.videos.filter((id) => {
+      return id.toString() !== videoId;
+    });
+    user.save();
   } catch (error) {
     console.log(error);
   } finally {
     res.redirect(routes.home);
+  }
+};
+
+// Register Like
+export const postRegisterLike = async (req, res) => {
+  const {
+    params: { id: videoId },
+    user: { id: userId },
+  } = req;
+  try {
+    const video = await Video.findById(videoId);
+    const user = await User.findById(userId);
+    video.like += 1;
+    video.save();
+    user.likeVideos.push(videoId);
+    user.save();
+    res.status(200);
+  } catch (error) {
+    res.status(400);
+  } finally {
+    res.end();
+  }
+};
+
+// Erase Like
+export const postEraseLike = async (req, res) => {
+  const {
+    params: { id: videoId },
+    user: { id: userId },
+  } = req;
+  try {
+    const video = await Video.findById(videoId);
+    const user = await User.findById(userId);
+    video.like -= 1;
+    video.save();
+    user.likeVideos = user.likeVideos.filter((item) => {
+      return item.toString() !== videoId;
+    });
+    user.save();
+    res.status(200);
+  } catch (error) {
+    res.status(400);
+  } finally {
+    res.end();
   }
 };

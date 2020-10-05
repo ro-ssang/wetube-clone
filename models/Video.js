@@ -24,6 +24,10 @@ const VideoSchema = new mongoose.Schema({
       ref: "User",
     },
   ],
+  like: {
+    type: Number,
+    default: 0,
+  },
 });
 
 const model = mongoose.model("Video", VideoSchema);

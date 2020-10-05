@@ -26,6 +26,11 @@ const GITHUB_CALLBACK = "/auth/github/callback";
 const GOOGLE = "/auth/google";
 const GOOGLE_CALLBACK = "/auth/google/callback";
 
+// API
+const API = "/api";
+const REGISTER_LIKE = "/:id/like-up";
+const ERASE_LIKE = "/:id/like-down";
+
 const routes = {
   home: HOME,
   login: LOGIN,
@@ -75,6 +80,9 @@ const routes = {
   githubCallback: GITHUB_CALLBACK,
   google: GOOGLE,
   googleCallback: GOOGLE_CALLBACK,
+  api: API,
+  registerLike: REGISTER_LIKE,
+  eraseLike: ERASE_LIKE,
 };
 
 export default routes;

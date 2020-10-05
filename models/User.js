@@ -17,6 +17,12 @@ const UserSchema = new mongoose.Schema({
       ref: "Video",
     },
   ],
+  likeVideos: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Video",
+    },
+  ],
 });
 
 UserSchema.plugin(passportLocalMongoose, { usernameField: "email" });

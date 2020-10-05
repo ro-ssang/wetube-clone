@@ -8,19 +8,30 @@
   .user-block__column {
     &:first-child {
       display: flex;
+      justify-content: space-between;
       align-items: center;
-      img {
-        width: $avatarWidth;
-        height: $avatarHeight;
-        border-radius: 50%;
-        margin-right: $marginMedium;
-      }
-      .user-info {
-        h4 {
-          margin-bottom: 6px;
+      .user-block__channel {
+        display: flex;
+        align-items: center;
+        img {
+          width: $avatarWidth;
+          height: $avatarHeight;
+          border-radius: 50%;
+          margin-right: $marginMedium;
         }
-        span {
-          color: $greyLightColor;
+        .user-info {
+          h4 {
+            margin-bottom: 6px;
+          }
+          span {
+            color: $greyLightColor;
+          }
+        }
+      }
+      .user-block__btns {
+        button {
+          padding: $paddingSmall;
+          text-transform: uppercase;
         }
       }
     }

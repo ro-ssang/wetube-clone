@@ -15,7 +15,7 @@
       span {
         position: absolute;
         &.active {
-          top: $marginSmall;
+          top: $marginMicro;
           font-size: $fontMicro;
           color: $greyDarkColor;
           transition: all 0.1s ease-in-out;
@@ -49,7 +49,7 @@
       }
       &.file {
         label {
-          top: $marginSmall;
+          top: $marginMicro;
           font-size: $fontMicro;
           color: $greyDarkColor;
         }
@@ -80,7 +80,7 @@
         align-items: center;
         i {
           font-size: $fontMedium;
-          margin-right: $marginSmall;
+          margin-right: $marginMicro;
         }
       }
     }

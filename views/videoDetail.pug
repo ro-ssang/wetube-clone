@@ -13,11 +13,11 @@ block content
                 span 1M views &bullet; #{video.createdAt}
                 .action-btns
                     button
-                        i.fas.fa-thumbs-up
-                        span 1K
-                    button
-                        i.fas.fa-thumbs-down
-                        span 0
+                        if (like)
+                            i.fas.fa-heart
+                        else
+                            i.far.fa-heart
+                        span=video.like
         +userBlock({
             avatarUrl: video.creator.avatarUrl,
             name: video.creator.name,

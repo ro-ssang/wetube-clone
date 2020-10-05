@@ -32,11 +32,16 @@
           display: flex;
           button {
             display: flex;
+            justify-content: center;
+            align-items: center;
             font-size: $fontSmall;
             padding: $paddingSmall;
             margin-left: $marginMedium;
             i {
-              margin-right: $marginMedium;
+              margin-right: $marginSmall;
+              &.fas {
+                color: $redColor;
+              }
             }
           }
         }
