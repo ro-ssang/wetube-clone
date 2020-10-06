@@ -1,5 +1,5 @@
 mixin userBlock(user = {})
-    .user-block
+    section.user-block
         .user-block__column
             .user-block__channel
                 img(src=`${user.avatarUrl}`)
@@ -13,4 +13,3 @@ mixin userBlock(user = {})
                     button Subscribe
         .user-block__column
             p=user.description
-            span=user.comment

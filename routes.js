@@ -32,6 +32,7 @@ const REGISTER_LIKE = "/:id/like-up";
 const ERASE_LIKE = "/:id/like-down";
 const SUBSCRIBE = "/:id/subscribe";
 const CANCEL = "/:id/cancel";
+const ADD_COMMENT = "/:id/comment";
 
 const routes = {
   home: HOME,
@@ -87,6 +88,7 @@ const routes = {
   eraseLike: ERASE_LIKE,
   subscribe: SUBSCRIBE,
   cancel: CANCEL,
+  addComment: ADD_COMMENT,
 };
 
 export default routes;

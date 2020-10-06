@@ -5,3 +5,4 @@ import "../scss/styles.scss";
 import "./form";
 import "./likeButton";
 import "./subscribe";
+import "./comment";

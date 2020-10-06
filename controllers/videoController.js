@@ -1,6 +1,7 @@
 import routes from "../routes";
 import Video from "../models/Video";
 import User from "../models/User";
+import Comment from "../models/Comment";
 
 // Home
 export const getHome = async (req, res) => {
@@ -20,12 +21,20 @@ export const getVideoDetail = async (req, res) => {
     user: { id: userId },
   } = req;
   try {
-    const video = await Video.findById(videoId).populate("creator");
+    const video = await Video.findById(videoId)
+      .populate("creator")
+      .populate({
+        path: "comments",
+        populate: {
+          path: "commentor",
+          model: "User",
+        },
+      });
     const user = await User.findById(userId);
     const like = user.likeVideos.includes(videoId);
     const subscribe = user.subscribe.includes(video.creator.id);
     res.render("videoDetail", {
-      title: "Video Detail",
+      title: video.title,
       video,
       like,
       subscribe,
@@ -146,6 +155,29 @@ export const postEraseLike = async (req, res) => {
       return item.toString() !== videoId;
     });
     user.save();
+    res.status(200);
+  } catch (error) {
+    res.status(400);
+  } finally {
+    res.end();
+  }
+};
+
+// Add Comment
+export const postAddComment = async (req, res) => {
+  const {
+    params: { id: videoId },
+    body: { comment },
+    user,
+  } = req;
+  try {
+    const video = await Video.findById(videoId);
+    const newComment = await Comment.create({
+      comment,
+      commentor: user.id,
+    });
+    video.comments.push(newComment.id);
+    video.save();
     res.status(200);
   } catch (error) {
     res.status(400);

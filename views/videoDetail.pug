@@ -23,3 +23,23 @@ block content
             name: video.creator.name,
             description: video.description
         })
+        section.comments
+            if (video.comments.length === 1)
+                h2.comments__counter #{video.comments.length} Comment
+            else
+                h2.comments__counter #{video.comments.length} Comments
+            form
+                img(src=loggedUser.avatarUrl, alt=loggedUser.name)
+                input(type="text", placeholder="Add your comment")
+            ul
+                each item in video.comments.reverse()
+                    li.comment
+                        img(src=item.commentor.avatarUrl)
+                        .comment__content
+                            h4=item.commentor.name
+                            span.text=item.comment
+                            .comment__btns
+                                button
+                                    i.fas.fa-heart
+                                    span 20
+                                button.reply reply

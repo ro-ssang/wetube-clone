@@ -21,7 +21,7 @@ const VideoSchema = new mongoose.Schema({
   comments: [
     {
       type: Schema.Types.ObjectId,
-      ref: "User",
+      ref: "Comment",
     },
   ],
   like: {
