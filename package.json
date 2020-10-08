@@ -3,12 +3,13 @@
   "version": "1.0.0",
   "description": "Youtube Clone with VanillaJS and Node.js",
   "scripts": {
-    "start": "nodemon --exec babel-node app.js --delay 2"
+    "start": "nodemon --exec babel-node src/index.js --delay 2"
   },
   "author": "Sang-Ro Lee",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "pug": "^3.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.11.6",
