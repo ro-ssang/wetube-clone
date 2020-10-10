@@ -1,0 +1,53 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: $paddingMedium;
+  .menu-btn-and-logo {
+    display: flex;
+    align-items: center;
+    .menu-btn {
+      font-size: $iconMedium;
+      padding: $paddingMedium;
+      margin-right: $marginMedium;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      i {
+        font-size: $iconLarge;
+        margin-right: $marginSmall;
+      }
+      .title {
+        font-size: $fontLarge;
+      }
+    }
+  }
+  .search-form {
+    position: relative;
+    width: 40%;
+    i {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      font-size: $iconMedium;
+    }
+    input {
+      width: 100%;
+      padding: $paddingSmall $paddingMedium;
+      padding-left: calc(#{$paddingMedium} * 4);
+    }
+  }
+  .authentication {
+    display: flex;
+    li {
+      padding: $paddingMedium;
+      margin-left: $marginSmall;
+      &:hover {
+        background-color: $accentColor;
+        border-radius: 4px;
+      }
+    }
+  }
+}

@@ -1,3 +1,27 @@
+@import "config/reset";
+@import "config/variables";
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;700&display=swap");
+
+// Partials
+@import "partials/header.scss";
+
+* {
+  box-sizing: border-box;
+}
+
 body {
-  background-color: tomato;
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+button {
+  border: none;
+  background-color: inherit;
+  outline: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
 }

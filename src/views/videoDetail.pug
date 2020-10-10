@@ -1,45 +1,47 @@
 extends layouts/main
 
 block content
-    section.video-player
-        video(src="#")
-    section.video-info
-        span.title Video Title
-        .views-and-actions
-            span.views 1M views &#8901; 2020. 10. 10.
-            ul.actions
-                li
-                    button
-                        i.far.fa-heart
-                        span 1K
-                li
-                    button
-                        i.fas.fa-plus
-                        span save
-    section.channel
-        .creator
-            img(src="#")
-            .metadata
-                span.name Rossa
-                span.subscribers 1M
-        button.subscribe Subscribe
-        span.video-description This is video description!!!
-    section.comments
-        form.comment-form(action="#", method="#")
-            input(type="text", name="comment", placeholder="Add your comment...")
-        ul.commentors
-            li.commentor
-                img(src="#")
-                .metadata-and-actions
-                    .metadata
-                        .name-and-created-date
-                            span.name Nomad
-                            span.created-date 1 month ago
-                        span.comment This is Comment!!
-                    .actions
+    .video-detail
+        section.video-player
+            video(src="/static/Big_Buck_Bunny_360_10s_1MB.mp4")
+        section.video-info
+            span.title Video Title
+            .views-and-actions
+                span.views 1M views &#8901; 2020. 10. 10.
+                ul.actions
+                    li
                         button
                             i.far.fa-heart
                             span 1K
-                        button reply
-                button.more-btn
-                    i.fas.fa-ellipsis-v
+                    li
+                        button
+                            i.fas.fa-plus
+                            span save
+        section.channel
+            .creator
+                img(src="/static/profile.png")
+                .metadata
+                    span.name Rossa
+                    span.subscribers 1M
+            button.subscribe Subscribe
+            span.video-description This is video description!!!
+        section.comments
+            form.comment-form(action="#", method="#")
+                input(type="text", name="comment", placeholder="Add your comment...")
+            ul.commentors
+                li.commentor
+                    img(src="#")
+                    .metadata-and-actions
+                        .metadata
+                            .name-and-created-date
+                                span.name Nomad
+                                span.created-date 1 month ago
+                            span.comment This is Comment!!
+                        .actions
+                            button
+                                i.far.fa-heart
+                                span 1K
+                            button reply
+                    button.more-btn
+                        i.fas.fa-ellipsis-v
+    
