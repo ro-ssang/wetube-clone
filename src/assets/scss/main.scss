@@ -1,0 +1,30 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+button {
+  border: none;
+  background-color: inherit;
+  outline: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+input {
+  padding: 0;
+  outline: none;
+}
+
+input[type="submit"] {
+  border: none;
+  cursor: pointer;
+}

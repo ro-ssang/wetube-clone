@@ -1,0 +1,214 @@
+.video-detail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  .video-player {
+    width: 100%;
+    text-align: center;
+    background-color: whitesmoke;
+    video {
+      width: 100%;
+      max-width: 1200px;
+    }
+  }
+  .video-detail-metadata {
+    width: 100%;
+    max-width: 1200px;
+    display: flex;
+    margin-top: 20px;
+    margin-bottom: calc(#{$marginLarge} * 5);
+    .video-info-and-channel-info {
+      width: 100%;
+      padding-right: calc(#{paddingLarge} * 5);
+      .video-info {
+        width: 100%;
+        .title {
+          font-size: 24px;
+          font-weight: 600;
+        }
+        .views-and-actions {
+          display: flex;
+          justify-content: space-between;
+          margin-top: 10px;
+          .views {
+            font-size: $fontSmall;
+            font-weight: 300;
+            color: grey;
+          }
+          .actions {
+            display: flex;
+            align-items: center;
+            li {
+              margin-left: $marginMedium;
+              button {
+                padding: 0 $paddingMedium;
+                font-size: $fontMedium;
+                i {
+                  margin-right: calc(#{$marginSmall} * 2);
+                }
+              }
+            }
+          }
+        }
+      }
+      .channel-and-description {
+        width: 100%;
+        padding: $paddingLarge 0;
+        border-top: 1px solid grey;
+        border-bottom: 1px solid grey;
+        margin-top: $marginMedium;
+        .channel {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          .creator {
+            display: flex;
+            align-items: center;
+            img {
+              width: $avatarWidth;
+              height: $avatarHeight;
+              border-radius: 50%;
+              margin-right: $marginMedium;
+            }
+            .metadata {
+              display: flex;
+              flex-direction: column;
+              .name {
+                font-size: $fontMedium;
+                font-weight: 600;
+                margin-bottom: $marginSmall;
+              }
+              .subscribers {
+                color: grey;
+                font-size: $fontMicro;
+                font-weight: 300;
+              }
+            }
+          }
+          .subscribe {
+            padding: $paddingMedium;
+            color: white;
+            background-color: grey;
+            border-radius: 4px;
+            text-transform: uppercase;
+          }
+        }
+        .video-description {
+          margin-top: $marginMedium;
+          padding-left: calc(#{$avatarWidth} + #{$marginMedium});
+          .more-btn {
+            display: block;
+            margin-top: $marginMedium;
+            color: grey;
+          }
+        }
+      }
+    }
+    .horizontal-divider {
+      padding: $paddingMedium;
+    }
+    .comments {
+      width: 100%;
+      .comment-form {
+        margin-top: 10px;
+        .avatar-and-text {
+          display: flex;
+          align-items: center;
+          img {
+            width: $avatarWidth;
+            height: $avatarHeight;
+            border-radius: 50%;
+            margin-right: $marginMedium;
+          }
+          input {
+            width: 100%;
+            border: none;
+            border-bottom: 1px solid grey;
+            padding: $paddingSmall 0;
+            font-size: $fontSmall;
+          }
+        }
+      }
+      .btns {
+        display: flex;
+        justify-content: flex-end;
+        margin-top: $marginMedium;
+        button,
+        input {
+          padding: $paddingMedium;
+          color: white;
+          background-color: grey;
+          border-radius: 4px;
+          text-transform: uppercase;
+        }
+        input {
+          margin-left: $marginMedium;
+        }
+      }
+      .commentors {
+        margin-top: calc(#{$marginLarge} * 2);
+        .commentor {
+          display: flex;
+          justify-content: space-between;
+          align-items: flex-start;
+          margin-bottom: $marginLarge;
+          .commentor-info {
+            display: flex;
+            img {
+              width: $avatarWidth;
+              height: $avatarHeight;
+              border-radius: 50%;
+              margin-right: $marginMedium;
+            }
+            .metadata {
+              padding: 5px 0;
+              .name-and-created-date {
+                margin-bottom: $marginSmall;
+                .name {
+                  font-size: $fontSmall;
+                  font-weight: 600;
+                  margin-right: $marginSmall;
+                }
+                .created-date {
+                  color: grey;
+                  font-size: $fontMicro;
+                  font-weight: 300;
+                }
+              }
+            }
+            .actions {
+              margin-top: $marginMedium;
+              button {
+                font-size: $fontSmall;
+                margin-right: $marginMedium;
+                color: grey;
+                i {
+                  margin-right: calc(#{$marginSmall} * 2);
+                }
+              }
+            }
+          }
+          .more-btn {
+            padding: 0 $paddingMedium;
+            font-size: $fontMedium;
+            color: grey;
+            i {
+              margin-right: calc(#{$marginSmall} * 2);
+            }
+          }
+        }
+      }
+    }
+  }
+  @media screen and (max-width: 850px) {
+    .video-detail-metadata {
+      flex-direction: column;
+      padding: 0 $paddingSmall;
+    }
+  }
+  @media screen and (min-width: 851px) and (max-width: 1220px) {
+    .video-detail-metadata {
+      padding: 0 $paddingSmall;
+    }
+  }
+}
