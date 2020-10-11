@@ -42,11 +42,58 @@
   .authentication {
     display: flex;
     li {
-      padding: $paddingMedium;
-      margin-left: $marginSmall;
-      &:hover {
-        background-color: $accentColor;
-        border-radius: 4px;
+      &:not(.loggedUser) {
+        padding: $paddingMedium;
+        margin-left: $marginSmall;
+        &:hover {
+          background-color: $accentColor;
+          border-radius: 4px;
+        }
+      }
+      &.loggedUser {
+        position: relative;
+        display: flex;
+        align-items: center;
+        .name {
+          font-size: $fontSmall;
+          margin-right: 10px;
+        }
+        img {
+          width: $avatarWidthSmall;
+          height: $avatarHeightSmall;
+          border-radius: 50%;
+        }
+        .dropdown-btn {
+          padding: $paddingSmall;
+          margin-left: $marginSmall;
+        }
+        .dropdown {
+          position: absolute;
+          top: 40px;
+          right: 0;
+          z-index: 99;
+          &.hidden {
+            display: none;
+          }
+          .content {
+            padding: $paddingMedium;
+            min-width: 180px;
+            background-color: white;
+            border-radius: 4px;
+            box-shadow: 0px 6px 17px -6px rgba(0, 0, 0, 0.75);
+            li {
+              margin: $marginMedium 0;
+              a {
+                display: flex;
+                align-items: center;
+                i {
+                  width: calc(#{$iconMedium} + 4px);
+                  margin-right: $marginMedium;
+                }
+              }
+            }
+          }
+        }
       }
     }
   }
