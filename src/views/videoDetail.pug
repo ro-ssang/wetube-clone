@@ -28,19 +28,22 @@ block content
                                 a.name(href="#")
                                     span Rossa
                                 span.subscribers 1M subscribers
-                        button.subscribe Subscribe
+                        .btns
+                            button.subscribe Subscribe
+                            a(href="#")
+                                button.edit-video Edit video
                     section.video-description
                         span.description This is video description!!!
                         button.more-btn More
             .horizontal-divider
             section.comments
-                form.comment-form(action="#", method="#")
+                form.comment-form#commentGenerator(action="#", method="#")
                     .avatar-and-text
                         img(src="/static/profile.png")
                         input(type="text", name="comment", placeholder="Add your comment...", autocomplete="off")
-                    .btns
-                        button Cancel
-                        input(type="submit", value="comment")
+                    .btns.hidden
+                        button.cancel-btn Cancel
+                        input.submit-btn(type="submit", value="comment")
                 ul.commentors
                     li.commentor
                         .commentor-info

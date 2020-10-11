@@ -2,7 +2,8 @@
 import "../scss/style.scss";
 
 // JS
-import "./loggedUserDropDown.js";
+import "./loggedUserDropDown";
+import "./commentGenerator";
 
 const something = () => {
   console.log("Webpack is running");

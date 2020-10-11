@@ -85,12 +85,15 @@
               }
             }
           }
-          .subscribe {
-            padding: $paddingMedium;
-            color: white;
-            background-color: grey;
-            border-radius: 4px;
-            text-transform: uppercase;
+          .btns {
+            button {
+              padding: $paddingMedium;
+              margin-left: $marginSmall;
+              color: white;
+              background-color: grey;
+              border-radius: 4px;
+              text-transform: uppercase;
+            }
           }
         }
         .video-description {
@@ -133,6 +136,9 @@
         display: flex;
         justify-content: flex-end;
         margin-top: $marginMedium;
+        &.hidden {
+          display: none;
+        }
         button,
         input {
           padding: $paddingMedium;
