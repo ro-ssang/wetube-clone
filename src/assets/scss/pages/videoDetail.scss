@@ -162,6 +162,11 @@
           justify-content: space-between;
           align-items: flex-start;
           margin-bottom: $marginLarge;
+          &:hover {
+            .more-btn {
+              display: block;
+            }
+          }
           .commentor-info {
             display: flex;
             img {
@@ -200,6 +205,7 @@
           }
           .more-btn {
             padding: 0 $paddingMedium;
+            margin-top: $marginMedium;
             font-size: $fontMedium;
             color: grey;
             i {

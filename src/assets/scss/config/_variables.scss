@@ -1,8 +1,11 @@
 // Colors
 $accentColor: #ff6b81;
+$greenColor: #1dd1a1;
+$white: #ffffff;
 
 // Icon sizes
 $iconMedium: 16px;
+$iconMediumLarge: 22px;
 $iconLarge: 30px;
 
 // Font sizes
@@ -10,11 +13,13 @@ $fontMicro: 12px;
 $fontSmall: 14px;
 $fontMedium: 16px;
 $fontLarge: 20px;
+$fontSuper: 80px;
 
 // Padding sizes
 $paddingSmall: 8px;
 $paddingMedium: 10px;
 $paddingLarge: 24px;
+$paddingSuper: 450px;
 
 // Margin sizes
 $marginSmall: 4px;
@@ -22,7 +27,18 @@ $marginMedium: 10px;
 $marginLarge: 24px;
 
 // Avatar sizes
+$avatarWidthMicro: 26px;
+$avatarHeightMicro: 26px;
 $avatarWidthSmall: 36px;
 $avatarHeightSmall: 36px;
 $avatarWidth: 46px;
 $avatarHeight: 46px;
+
+// Aside width
+$asideWidth: 220px;
+
+// Hedaer Height
+$headerHeight: 58px;
+
+// form container
+$formContainerWidth: 420px;

@@ -1,7 +1,7 @@
 extends layouts/main
 
 block content
-    .video-detail
+    article.video-detail
         section.video-player
             video(src="/static/Big_Buck_Bunny_360_10s_1MB.mp4")
         .video-detail-metadata
@@ -44,7 +44,7 @@ block content
                     .btns.hidden
                         button.cancel-btn Cancel
                         input.submit-btn(type="submit", value="comment")
-                ul.commentors
+                ul.commentors#commentors
                     li.commentor
                         .commentor-info
                             a(href="#")

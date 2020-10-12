@@ -28,3 +28,16 @@ input[type="submit"] {
   border: none;
   cursor: pointer;
 }
+
+.aside-and-main {
+  display: flex;
+  aside {
+    flex: 1 1 10%;
+  }
+  main {
+    flex: 1 1 90%;
+    margin-left: $asideWidth;
+    background-color: whitesmoke;
+    min-height: calc(100vh - #{$headerHeight});
+  }
+}

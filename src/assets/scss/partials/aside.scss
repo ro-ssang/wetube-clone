@@ -1,0 +1,42 @@
+.aside {
+  position: fixed;
+  left: 0;
+  min-width: $asideWidth;
+  height: calc(100vh - #{$headerHeight});
+  background-color: $white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  ul {
+    margin: $marginLarge 0;
+    h2 {
+      padding: 0 calc(#{$paddingMedium} * 2);
+      margin-bottom: $marginMedium;
+      font-size: calc(#{$fontLarge} / 2);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+    }
+    a {
+      display: flex;
+      align-items: center;
+      padding: $paddingMedium calc(#{$paddingMedium} * 2);
+      &:hover {
+        background-color: $accentColor;
+      }
+      i {
+        font-size: $iconMediumLarge;
+        margin-right: calc(#{$marginMedium} * 2);
+      }
+      img {
+        width: $avatarWidthMicro;
+        height: $avatarHeightMicro;
+        border-radius: 50%;
+        margin-right: calc(#{$marginMedium} * 2 - 4px);
+      }
+      span {
+        font-size: $fontSmall;
+        letter-spacing: 1px;
+      }
+    }
+  }
+}

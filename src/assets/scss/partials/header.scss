@@ -1,9 +1,12 @@
 .header {
+  position: sticky;
+  top: 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
   padding: $paddingMedium;
+  background-color: $white;
   .menu-btn-and-logo {
     display: flex;
     align-items: center;
@@ -45,6 +48,7 @@
       &:not(.loggedUser) {
         padding: $paddingMedium;
         margin-left: $marginSmall;
+        letter-spacing: 0.6px;
         &:hover {
           background-color: $accentColor;
           border-radius: 4px;
