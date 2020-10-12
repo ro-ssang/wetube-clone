@@ -1,0 +1,29 @@
+.social-login {
+  li {
+    width: 100%;
+    &:not(:last-child) {
+      margin-bottom: $marginLarge;
+    }
+    a {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: calc((#{$fontSmall} + (#{$marginSmall} * 2)) / 2) $paddingMedium;
+      border-radius: 4px;
+      &.github-login {
+        background-color: $githubColor;
+        color: white;
+      }
+      &.google-login {
+        background-color: white;
+      }
+      i {
+        margin-right: $marginMedium;
+        font-size: $iconMediumLarge;
+      }
+      span {
+        letter-spacing: 0.5px;
+      }
+    }
+  }
+}

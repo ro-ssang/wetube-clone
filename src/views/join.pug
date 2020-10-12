@@ -2,27 +2,41 @@ extends layouts/main
 
 block content
     article.join
-        .pageTitle-and-form-container
+        .page-info-and-form-container
             section.page-info
                 h1.pageTitle Join
                 p.description
                     |Welcome to WeTube!<br>
                     |You can sign up with our site by filling out the form or using social login.
-            form.form-container#jsForm(action="#", method="#")
-                .input-container
-                    h5.title.large Name
-                    span.msg.hidden message
-                    input.input(type="text", name="name", required)
-                .input-container
-                    h5.title.large Email
-                    span.msg.hidden message
-                    input.input(type="email", name="email", required)
-                .input-container
-                    h5.title.large Password
-                    span.msg.hidden message
-                    input.input(type="password", name="password", required)
-                .input-container
-                    h5.title.large Verify Password
-                    span.msg.hidden message
-                    input.input(type="password", name="password1", required)
-                input(type="submit", value="Join")
+            .form-and-social-login
+                form.form-container#jsForm(action="#", method="#")
+                    .input-container
+                        h5.title.large Name
+                        span.msg.hidden message
+                        input.input(type="text", name="name", required)
+                    .input-container
+                        h5.title.large Email
+                        span.msg.hidden message
+                        input.input(type="email", name="email", required)
+                    .input-container
+                        h5.title.large Password
+                        span.msg.hidden message
+                        input.input(type="password", name="password", required)
+                    .input-container
+                        h5.title.large Verify Password
+                        span.msg.hidden message
+                        input.input(type="password", name="password1", required)
+                    input(type="submit", value="Join")
+                .divider
+                    .line
+                    span or
+                    .line
+                ul.social-login
+                        li
+                            a.github-login(href="#")
+                                i.fab.fa-github
+                                span Github
+                        li
+                            a.google-login(href="#")
+                                i.fab.fa-google
+                                span Google
