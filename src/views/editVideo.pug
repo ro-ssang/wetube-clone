@@ -1,4 +1,28 @@
 extends layouts/main
 
 block content
-    h1 Edit Video
+    article.edit-video
+        .page-info-and-form-container
+            section.page-info
+                h1.pageTitle Edit Video
+                p.description
+                    |Welcome to WeTube!<br>
+                    |You can sign up with our site by filling out the form or using social login.
+            form.form-container#jsForm(action="#", method="#")
+                .input-container
+                    h5.title.large Title
+                    span.msg.hidden message
+                    input.input(type="text", name="title", required)
+                .input-container
+                    h5.title.large Description
+                    span.msg.hidden message
+                    textarea.textarea(name="description", required)
+                input(type="submit", value="Edit Video")
+                .divider
+                    .line
+                    span or
+                    .line
+                ul.additional-btns
+                    li.btn
+                        a.delete-video(href="#")
+                            span Delete Video
