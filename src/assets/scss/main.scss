@@ -29,6 +29,12 @@ input[type="submit"] {
   cursor: pointer;
 }
 
+textarea {
+  font-family: "Noto Sans KR", sans-serif;
+  resize: none;
+  outline: none;
+}
+
 .aside-and-main {
   display: flex;
   aside {

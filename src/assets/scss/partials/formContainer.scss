@@ -20,7 +20,8 @@
   }
   .form-container {
     width: $formContainerWidth;
-    input {
+    input,
+    textarea {
       width: 100%;
       padding: calc(#{$fontSmall} + (#{$marginSmall} * 2))
         calc(#{$paddingLarge} / 2);
@@ -45,6 +46,9 @@
           border: 1px solid $accentColor;
         }
       }
+    }
+    textarea {
+      height: $textareaHeight;
     }
     .input-container {
       position: relative;
