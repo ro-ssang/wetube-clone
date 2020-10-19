@@ -55,9 +55,11 @@ const init = () => {
     input.addEventListener("blur", handleBlur);
     input.addEventListener("input", handleInput);
   });
-  textarea.addEventListener("focus", handleFocus);
-  textarea.addEventListener("blur", handleBlur);
-  textarea.addEventListener("input", handleInput);
+  if (textarea) {
+    textarea.addEventListener("focus", handleFocus);
+    textarea.addEventListener("blur", handleBlur);
+    textarea.addEventListener("input", handleInput);
+  }
 };
 
 if (form) {
