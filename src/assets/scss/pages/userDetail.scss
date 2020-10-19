@@ -1,0 +1,65 @@
+.user-detail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  .channel-info {
+    width: 100%;
+    display: flex;
+    align-items: flex-end;
+    max-width: 1200px;
+    margin-top: $headerHeight;
+    img {
+      width: $avatarWidthLarge;
+      height: $avatarHeightLarge;
+      border-radius: 50%;
+      margin-right: $marginLarge;
+    }
+    .metadata {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      .user-info-and-tabs {
+        width: 100%;
+        .user-info-and-btns {
+          display: flex;
+          justify-content: space-between;
+          margin-bottom: $marginMedium;
+          .name {
+            font-size: calc(#{$fontLarge} * 2);
+            font-weight: 600;
+            margin-bottom: $marginSmall;
+            letter-spacing: 0.5px;
+          }
+          .btns {
+            display: flex;
+            align-items: flex-end;
+            li {
+              padding: $paddingMedium;
+              margin-left: $marginSmall;
+              color: white;
+              background-color: grey;
+              border-radius: 4px;
+              text-transform: uppercase;
+              letter-spacing: 1px;
+              font-size: $fontSmall;
+              font-weight: 300;
+            }
+          }
+        }
+        .tabs {
+          display: flex;
+          .tab {
+            width: $tabWidth;
+            padding: $paddingMedium;
+            text-align: center;
+            font-size: $fontMedium;
+            cursor: pointer;
+            &.active {
+              border-bottom: 3px solid $accentColor;
+            }
+          }
+        }
+      }
+    }
+  }
+}

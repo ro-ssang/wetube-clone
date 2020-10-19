@@ -91,6 +91,7 @@
             }
           }
           .btns {
+            display: flex;
             button {
               padding: $paddingMedium;
               margin-left: $marginSmall;
