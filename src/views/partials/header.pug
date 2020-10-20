@@ -2,38 +2,38 @@ header.header
     .menu-btn-and-logo
         button.menu-btn
             i.fas.fa-bars
-        a(href="#").logo
+        a(href=routes.home).logo
             i.fab.fa-youtube
             span.title WeTube
-    form.search-form(action="#", method="#")
+    form.search-form(action=routes.search, method="get")
         i.fas.fa-search
         input(type="text", name="term", placeholder="Search...")
     ul.authentication
-        //- li
-        //-     a(href="#") Join
-        //- li
-        //-     a(href="#") Login
-        li.loggedUser#jsLoggedUser
-            span.name Rossa
-            img(src="/static/profile.png")
-            button.dropdown-btn
-                i.fas.fa-sort-down
-            .dropdown.hidden
-                ul.content
-                    li
-                        a(href="#")
-                            i.fas.fa-tv
-                            span My Channel
-                    li
-                        a(href="#")
-                            i.fas.fa-upload
-                            span Upload Video
-                    li
-                        a(href="#")
-                            i.fas.fa-user-edit
-                            span Edit Profile
-                    li
-                        a(href="#")
-                            i.fas.fa-sign-out-alt
-                            span Log Out
+        li
+            a(href=routes.join) Join
+        li
+            a(href=routes.login) Login
+        //- li.loggedUser#jsLoggedUser
+        //-     span.name Rossa
+        //-     img(src="/static/profile.png")
+        //-     button.dropdown-btn
+        //-         i.fas.fa-sort-down
+        //-     .dropdown.hidden
+        //-         ul.content
+        //-             li
+        //-                 a(href=`${routes.user}${routes.userDetail}`)
+        //-                     i.fas.fa-tv
+        //-                     span My Channel
+        //-             li
+        //-                 a(href=`${routes.video}${routes.upload}`)
+        //-                     i.fas.fa-upload
+        //-                     span Upload Video
+        //-             li
+        //-                 a(href=`${routes.user}${routes.editProfile}`)
+        //-                     i.fas.fa-user-edit
+        //-                     span Edit Profile
+        //-             li
+        //-                 a(href=`${routes.logout}`)
+        //-                     i.fas.fa-sign-out-alt
+        //-                     span Log Out
                             

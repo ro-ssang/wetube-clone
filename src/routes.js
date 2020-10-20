@@ -3,7 +3,7 @@ const HOME = "/";
 const SEARCH = "/search";
 const JOIN = "/join";
 const LOGIN = "/login";
-const LOGOUT = "logout";
+const LOGOUT = "/logout";
 
 // Video routes
 const VIDEO = "/video";
