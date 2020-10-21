@@ -15,15 +15,15 @@ export const postJoin = async (req, res, next) => {
   if (password !== password1) {
     res.status(400);
     res.render("join", { pageTitle: "Join" });
-  } else {
-    try {
-      const newUser = new User({ name, email, avatarUrl });
-      await User.register(newUser, password);
-      next();
-    } catch (err) {
-      console.log(err);
-      res.redirect(routes.join);
-    }
+    return;
+  }
+  try {
+    const newUser = new User({ name, email, avatarUrl });
+    await User.register(newUser, password);
+    next();
+  } catch (err) {
+    console.log(err);
+    res.redirect(routes.join);
   }
 };
 
@@ -58,7 +58,6 @@ export const postEditProfile = async (req, res) => {
     await User.findByIdAndUpdate(loggedUserId, { avatarUrl, name });
     res.redirect(`${routes.channel}${routes.me}`);
   } catch (err) {
-    res.status(304);
     res.redirect(`${routes.user}${routes.editProfile}`);
   }
 };
@@ -66,6 +65,27 @@ export const postEditProfile = async (req, res) => {
 // Change Password
 export const getChangePassword = (req, res) => {
   res.render("changePassword", { pageTitle: "Change Password" });
+};
+
+export const postChangePassword = async (req, res) => {
+  const {
+    body: { oldPassword, newPassword, newPassword1 },
+    user: { id: loggedUserId },
+  } = req;
+  if (newPassword !== newPassword1) {
+    res.status(400);
+    res.redirect(`${routes.user}${routes.changePassword}`);
+    return;
+  }
+  try {
+    const user = await User.findById(loggedUserId);
+    await user.changePassword(oldPassword, newPassword);
+    res.redirect(`${routes.channel}${routes.me}`);
+  } catch (err) {
+    console.log(err);
+    res.status(400);
+    res.redirect(`${routes.user}${routes.changePassword}`);
+  }
 };
 
 // Me

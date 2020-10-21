@@ -2,6 +2,7 @@ import express from "express";
 import {
   getChangePassword,
   getEditProfile,
+  postChangePassword,
   postEditProfile,
 } from "../controllers/userController";
 import { uploadAvatar } from "../middlewares";
@@ -15,5 +16,6 @@ userRouter.post(routes.editProfile, uploadAvatar, postEditProfile);
 
 // Change Password
 userRouter.get(routes.changePassword, getChangePassword);
+userRouter.post(routes.changePassword, postChangePassword);
 
 export default userRouter;
