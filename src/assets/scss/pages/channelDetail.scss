@@ -9,6 +9,7 @@
     max-width: 1200px;
     margin-top: $headerHeight;
     img {
+      min-width: $avatarWidthLarge;
       width: $avatarWidthLarge;
       height: $avatarHeightLarge;
       border-radius: 50%;

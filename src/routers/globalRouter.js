@@ -5,7 +5,9 @@ import {
   getLogin,
   getLogout,
   githubLogin,
+  googleLogin,
   postGithubLogin,
+  postGoogleLogin,
   postJoin,
   postLogin,
 } from "../controllers/userController";
@@ -34,6 +36,14 @@ globalRouter.get(
   routes.githubCallback,
   passport.authenticate("github", { failureRedirect: routes.login }),
   postGithubLogin
+);
+
+// Google Login
+globalRouter.get(routes.google, googleLogin);
+globalRouter.get(
+  routes.googleCallback,
+  passport.authenticate("google", { failureRedirect: routes.login }),
+  postGoogleLogin
 );
 
 // Logout
