@@ -1,17 +1,17 @@
 extends layouts/main
 
 block content
-    article.user-detail
+    article.channel-detail
         section.channel-info
-            img(src=`/${loggedUser.avatarUrl}`)
+            img(src=`/${user.avatarUrl}`)
             .metadata
                 .user-info-and-tabs
                     .user-info-and-btns
                         .user-info
-                            h3.name=loggedUser.name
+                            h3.name=user.name
                         ul.btns
                             li.btn
-                                a(href=routes.editProfile(loggedUser.id))
+                                a(href=`${routes.user}${routes.editProfile}`)
                                     span Edit Profile
                             li.btn
                                 a(href=`${routes.video}${routes.upload}`)

@@ -23,7 +23,7 @@ header.header
                 .dropdown.hidden
                     ul.content
                         li
-                            a(href=routes.userDetail(loggedUser.id))
+                            a(href=`${routes.channel}${routes.me}`)
                                 i.fas.fa-tv
                                 span My Channel
                         li
@@ -31,7 +31,7 @@ header.header
                                 i.fas.fa-upload
                                 span Upload Video
                         li
-                            a(href=routes.editProfile(loggedUser.id))
+                            a(href=`${routes.user}${routes.editProfile}`)
                                 i.fas.fa-user-edit
                                 span Edit Profile
                         li

@@ -14,9 +14,13 @@ const DELETE_VIDEO = "/:id/delete-video";
 
 // User routes
 const USER = "/user";
-const USER_DETAIL = "/:id";
-const EDIT_PROFILE = "/:id/edit-profile";
-const CHANGE_PASSWORD = "/:id/change-password";
+const EDIT_PROFILE = "/edit-profile";
+const CHANGE_PASSWORD = "/change-password";
+
+// Channel routes
+const CHANNEL = "/channel";
+const ME = "/me";
+const CHANNEL_DETAIL = "/:id";
 
 const routes = {
   home: HOME,
@@ -24,25 +28,23 @@ const routes = {
   join: JOIN,
   login: LOGIN,
   logout: LOGOUT,
+  channel: CHANNEL,
   video: VIDEO,
   upload: UPLOAD,
   videoDetail: VIDEO_DATAIL,
   editVideo: EDIT_VIDEO,
   deleteVideo: DELETE_VIDEO,
   user: USER,
-  userDetail: (id) => {
-    if (id) {
-      return `${routes.user}/${id}`;
-    }
-    return USER_DETAIL;
-  },
-  editProfile: (id) => {
-    if (id) {
-      return `${routes.user}/${id}/edit-profile`;
-    }
-    return EDIT_PROFILE;
-  },
+  editProfile: EDIT_PROFILE,
   changePassword: CHANGE_PASSWORD,
+  channel: CHANNEL,
+  me: ME,
+  channelDetail: (id) => {
+    if (id) {
+      return `${routes.channel}/${id}`;
+    }
+    return CHANNEL_DETAIL;
+  },
 };
 
 export default routes;

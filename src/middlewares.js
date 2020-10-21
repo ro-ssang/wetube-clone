@@ -1,7 +1,7 @@
 import multer from "multer";
 import routes from "./routes";
 
-const multerAvatar = multer({ dest: "uploads/avatar" });
+const multerAvatar = multer({ dest: "uploads/avatars" });
 
 export const localsMiddleware = (req, res, next) => {
   res.locals.siteTitle = "WeTube";

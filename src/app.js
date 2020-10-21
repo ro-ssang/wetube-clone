@@ -9,6 +9,7 @@ import MongoStore from "connect-mongo";
 import mongoose from "mongoose";
 import passport from "passport";
 import { localsMiddleware } from "./middlewares";
+import channelRouter from "./routers/channelRouter";
 import globalRouter from "./routers/globalRouter";
 import userRouter from "./routers/userRouter";
 import videoRouter from "./routers/videoRouter";
@@ -52,5 +53,6 @@ app.use(localsMiddleware);
 app.use(routes.home, globalRouter);
 app.use(routes.video, videoRouter);
 app.use(routes.user, userRouter);
+app.use(routes.channel, channelRouter);
 
 export default app;

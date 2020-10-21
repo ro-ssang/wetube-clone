@@ -11,7 +11,7 @@ export const postJoin = async (req, res, next) => {
   const {
     body: { name, email, password, password1 },
   } = req;
-  const avatarUrl = "/static/profile.png";
+  const avatarUrl = "static/profile.png";
   if (password !== password1) {
     res.status(400);
     res.render("join", { pageTitle: "Join" });
@@ -43,11 +43,6 @@ export const getLogout = (req, res) => {
   res.redirect(routes.home);
 };
 
-// User Detail
-export const getUserDetail = (req, res) => {
-  res.render("userDetail", { pageTitle: "User Detail" });
-};
-
 // Edit Profile
 export const getEditProfile = (req, res) => {
   res.render("editProfile", { pageTitle: "Edit Profile" });
@@ -61,14 +56,35 @@ export const postEditProfile = async (req, res) => {
   } = req;
   try {
     await User.findByIdAndUpdate(loggedUserId, { avatarUrl, name });
-    res.redirect(routes.userDetail(loggedUserId));
+    res.redirect(`${routes.channel}${routes.me}`);
   } catch (err) {
     res.status(304);
-    res.redirect(routes.editProfile(loggedUserId));
+    res.redirect(`${routes.user}${routes.editProfile}`);
   }
 };
 
 // Change Password
 export const getChangePassword = (req, res) => {
   res.render("changePassword", { pageTitle: "Change Password" });
+};
+
+// Me
+export const getMe = (req, res) => {
+  const { user: loggedUser } = req;
+  res.render("channelDetail", { pageTitle: "My Channel", user: loggedUser });
+};
+
+// Channel Detail
+export const getChannelDetail = async (req, res) => {
+  const {
+    params: { id },
+  } = req;
+  try {
+    const user = await User.findById(id);
+    res.render("channelDetail", { pageTitle: user.name, user });
+  } catch (err) {
+    console.log(err);
+    res.status(404);
+    res.render("404");
+  }
 };

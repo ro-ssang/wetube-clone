@@ -8,7 +8,7 @@ block content
                 p.description
                     |Welcome to WeTube!<br>
                     |You can sign up with our site by filling out the form or using social login.
-            form.form-container#jsForm(action=routes.editProfile(loggedUser.id), method="post", enctype="multipart/form-data")
+            form.form-container#jsForm(action=`${routes.user}${routes.editProfile}`, method="post", enctype="multipart/form-data")
                 .input-container
                     h5.title Avatar File
                     span.msg.hidden message
@@ -16,7 +16,7 @@ block content
                 .input-container
                     h5.title.large Name
                     span.msg.hidden message
-                    input.input(type="text", name="name", required)
+                    input.input(type="text", name="name", required, value=loggedUser.name)
                 input(type="submit", value="Edit Profile")
                 .divider
                     .line
