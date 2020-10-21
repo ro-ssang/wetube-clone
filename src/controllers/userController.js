@@ -11,7 +11,7 @@ export const postJoin = async (req, res, next) => {
   const {
     body: { name, email, password, password1 },
   } = req;
-  const avatarUrl = "static/profile.png";
+  const avatarUrl = "/static/profile.png";
   if (password !== password1) {
     res.status(400);
     res.render("join", { pageTitle: "Join" });
@@ -37,6 +37,32 @@ export const postLogin = passport.authenticate("local", {
   successRedirect: routes.home,
 });
 
+// Github Login
+export const githubLogin = passport.authenticate("github");
+
+export const postGithubLogin = (req, res) => {
+  res.redirect(routes.home);
+};
+
+export const githubLoginCallback = async (_, __, profile, cb) => {
+  const {
+    _json: { name, avatar_url: avatarUrl, id: githubId },
+  } = profile;
+  const email = profile.emails.filter((obj) => obj.primary)[0].value;
+  try {
+    const user = await User.findOne({ email });
+    if (user) {
+      user.githubId = githubId;
+      user.save();
+      return cb(null, user);
+    }
+    const newUser = await User.create({ name, email, avatarUrl, githubId });
+    return cb(null, newUser);
+  } catch (err) {
+    return cb(error);
+  }
+};
+
 // Logout
 export const getLogout = (req, res) => {
   req.logout();
@@ -51,11 +77,14 @@ export const getEditProfile = (req, res) => {
 export const postEditProfile = async (req, res) => {
   const {
     body: { name },
-    file: { path: avatarUrl },
-    user: { id: loggedUserId },
+    file,
+    user: { id: loggedUserId, avatarUrl },
   } = req;
   try {
-    await User.findByIdAndUpdate(loggedUserId, { avatarUrl, name });
+    await User.findByIdAndUpdate(loggedUserId, {
+      name,
+      avatarUrl: file ? `/${file.path}` : avatarUrl,
+    });
     res.redirect(`${routes.channel}${routes.me}`);
   } catch (err) {
     res.redirect(`${routes.user}${routes.editProfile}`);

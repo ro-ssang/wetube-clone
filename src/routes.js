@@ -22,6 +22,10 @@ const CHANNEL = "/channel";
 const ME = "/me";
 const CHANNEL_DETAIL = "/:id";
 
+// Github
+const GITHUB = "/auth/github";
+const GITHUB_CALLBACK = "/auth/github/callback";
+
 const routes = {
   home: HOME,
   search: SEARCH,
@@ -45,6 +49,8 @@ const routes = {
     }
     return CHANNEL_DETAIL;
   },
+  github: GITHUB,
+  githubCallback: GITHUB_CALLBACK,
 };
 
 export default routes;

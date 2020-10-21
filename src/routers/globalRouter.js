@@ -4,6 +4,8 @@ import {
   getJoin,
   getLogin,
   getLogout,
+  githubLogin,
+  postGithubLogin,
   postJoin,
   postLogin,
 } from "../controllers/userController";
@@ -25,6 +27,14 @@ globalRouter.post(routes.join, postJoin, postLogin);
 // Login
 globalRouter.get(routes.login, getLogin);
 globalRouter.post(routes.login, postLogin);
+
+// Github Login
+globalRouter.get(routes.github, githubLogin);
+globalRouter.get(
+  routes.githubCallback,
+  passport.authenticate("github", { failureRedirect: routes.login }),
+  postGithubLogin
+);
 
 // Logout
 globalRouter.get(routes.logout, getLogout);

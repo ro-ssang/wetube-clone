@@ -3,21 +3,23 @@ extends layouts/main
 block content
     article.channel-detail
         section.channel-info
-            img(src=`/${user.avatarUrl}`)
+            img(src=user.avatarUrl)
             .metadata
                 .user-info-and-tabs
                     .user-info-and-btns
                         .user-info
                             h3.name=user.name
                         ul.btns
-                            li.btn
-                                a(href=`${routes.user}${routes.editProfile}`)
-                                    span Edit Profile
-                            li.btn
-                                a(href=`${routes.video}${routes.upload}`)
-                                    span Upload
-                            li.btn
-                                span Subscribe
+                            if (loggedUser)
+                                li.btn
+                                    a(href=`${routes.user}${routes.editProfile}`)
+                                        span Edit Profile
+                                li.btn
+                                    a(href=`${routes.video}${routes.upload}`)
+                                        span Upload
+                            else
+                                li.btn
+                                    span Subscribe
                     ul.tabs
                         li.tab.active
                             span Home
