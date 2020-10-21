@@ -1,0 +1,49 @@
+.home {
+  .videoBlock {
+    width: $videoWidth;
+    video {
+      width: 100%;
+    }
+    .metadata {
+      width: 100%;
+      display: flex;
+      margin-top: $marginMedium;
+      img {
+        width: $avatarWidth;
+        height: $avatarHeight;
+        border-radius: 50%;
+        margin-right: $marginMedium;
+      }
+      .video-info {
+        margin-top: calc(#{$marginSmall} * 2);
+        .title {
+          font-size: $fontMedium;
+          letter-spacing: 0.5px;
+          line-height: 1.1;
+        }
+        .name {
+          display: inline-block;
+          margin-top: $marginMedium;
+          font-size: $fontSmall;
+          font-weight: 300;
+          color: grey;
+          letter-spacing: 0.5px;
+        }
+        .views-and-elapsed-time {
+          margin-top: calc(#{$marginSmall} / 2);
+          color: grey;
+          letter-spacing: 0.5px;
+          span {
+            margin-right: $marginMedium;
+            font-size: $fontMicro;
+            font-weight: 300;
+            i {
+              margin-right: $marginSmall;
+              font-size: $iconSmall;
+            }
+          }
+        }
+      }
+    }
+  }
+}

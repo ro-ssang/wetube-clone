@@ -1,4 +1,19 @@
 extends layouts/main
 
 block content
-    h1 Home
+    article.home
+        article.videoBlock
+            a(href="#")
+                video(src="/static/Big_Buck_Bunny_360_10s_1MB.mp4")
+                .metadata
+                    img(src="/static/profile.png")
+                    .video-info
+                        h3.title Video title
+                        span.name Rossa
+                        .views-and-elapsed-time
+                            span.views
+                                i.fas.fa-eye
+                                |100,000,000
+                            span.elapsed-time
+                                i.fas.fa-undo-alt
+                                |2 hours ago
