@@ -11,12 +11,13 @@ export const postJoin = async (req, res, next) => {
   const {
     body: { name, email, password, password1 },
   } = req;
+  const avatarUrl = "/static/profile.png";
   if (password !== password1) {
     res.status(400);
     res.render("join", { pageTitle: "Join" });
   } else {
     try {
-      const newUser = new User({ name, email });
+      const newUser = new User({ name, email, avatarUrl });
       await User.register(newUser, password);
       next();
     } catch (err) {
@@ -38,7 +39,8 @@ export const postLogin = passport.authenticate("local", {
 
 // Logout
 export const getLogout = (req, res) => {
-  res.send("Logout Page");
+  req.logout();
+  res.redirect(routes.home);
 };
 
 // User Detail

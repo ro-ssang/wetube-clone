@@ -9,31 +9,32 @@ header.header
         i.fas.fa-search
         input(type="text", name="term", placeholder="Search...")
     ul.authentication
-        li
-            a(href=routes.join) Join
-        li
-            a(href=routes.login) Login
-        //- li.loggedUser#jsLoggedUser
-        //-     span.name Rossa
-        //-     img(src="/static/profile.png")
-        //-     button.dropdown-btn
-        //-         i.fas.fa-sort-down
-        //-     .dropdown.hidden
-        //-         ul.content
-        //-             li
-        //-                 a(href=`${routes.user}${routes.userDetail}`)
-        //-                     i.fas.fa-tv
-        //-                     span My Channel
-        //-             li
-        //-                 a(href=`${routes.video}${routes.upload}`)
-        //-                     i.fas.fa-upload
-        //-                     span Upload Video
-        //-             li
-        //-                 a(href=`${routes.user}${routes.editProfile}`)
-        //-                     i.fas.fa-user-edit
-        //-                     span Edit Profile
-        //-             li
-        //-                 a(href=`${routes.logout}`)
-        //-                     i.fas.fa-sign-out-alt
-        //-                     span Log Out
-                            
+        if (!loggedUser)
+            li
+                a(href=routes.join) Join
+            li
+                a(href=routes.login) Login
+        else
+            li.loggedUser#jsLoggedUser
+                span.name=loggedUser.name
+                img(src=loggedUser.avatarUrl)
+                button.dropdown-btn
+                    i.fas.fa-sort-down
+                .dropdown.hidden
+                    ul.content
+                        li
+                            a(href=`${routes.user}${routes.userDetail}`)
+                                i.fas.fa-tv
+                                span My Channel
+                        li
+                            a(href=`${routes.video}${routes.upload}`)
+                                i.fas.fa-upload
+                                span Upload Video
+                        li
+                            a(href=`${routes.user}${routes.editProfile}`)
+                                i.fas.fa-user-edit
+                                span Edit Profile
+                        li
+                            a(href=`${routes.logout}`)
+                                i.fas.fa-sign-out-alt
+                                span Log Out
