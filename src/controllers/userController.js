@@ -53,6 +53,21 @@ export const getEditProfile = (req, res) => {
   res.render("editProfile", { pageTitle: "Edit Profile" });
 };
 
+export const postEditProfile = async (req, res) => {
+  const {
+    body: { name },
+    file: { path: avatarUrl },
+    user: { id: loggedUserId },
+  } = req;
+  try {
+    await User.findByIdAndUpdate(loggedUserId, { avatarUrl, name });
+    res.redirect(routes.userDetail(loggedUserId));
+  } catch (err) {
+    res.status(304);
+    res.redirect(routes.editProfile(loggedUserId));
+  }
+};
+
 // Change Password
 export const getChangePassword = (req, res) => {
   res.render("changePassword", { pageTitle: "Change Password" });

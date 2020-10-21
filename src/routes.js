@@ -30,8 +30,18 @@ const routes = {
   editVideo: EDIT_VIDEO,
   deleteVideo: DELETE_VIDEO,
   user: USER,
-  userDetail: USER_DETAIL,
-  editProfile: EDIT_PROFILE,
+  userDetail: (id) => {
+    if (id) {
+      return `${routes.user}/${id}`;
+    }
+    return USER_DETAIL;
+  },
+  editProfile: (id) => {
+    if (id) {
+      return `${routes.user}/${id}/edit-profile`;
+    }
+    return EDIT_PROFILE;
+  },
   changePassword: CHANGE_PASSWORD,
 };
 

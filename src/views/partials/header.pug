@@ -17,13 +17,13 @@ header.header
         else
             li.loggedUser#jsLoggedUser
                 span.name=loggedUser.name
-                img(src=loggedUser.avatarUrl)
+                img(src=`/${loggedUser.avatarUrl}`)
                 button.dropdown-btn
                     i.fas.fa-sort-down
                 .dropdown.hidden
                     ul.content
                         li
-                            a(href=`${routes.user}${routes.userDetail}`)
+                            a(href=routes.userDetail(loggedUser.id))
                                 i.fas.fa-tv
                                 span My Channel
                         li
@@ -31,10 +31,10 @@ header.header
                                 i.fas.fa-upload
                                 span Upload Video
                         li
-                            a(href=`${routes.user}${routes.editProfile}`)
+                            a(href=routes.editProfile(loggedUser.id))
                                 i.fas.fa-user-edit
                                 span Edit Profile
                         li
-                            a(href=`${routes.logout}`)
+                            a(href=routes.logout)
                                 i.fas.fa-sign-out-alt
                                 span Log Out

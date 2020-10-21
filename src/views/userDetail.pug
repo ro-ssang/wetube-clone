@@ -3,15 +3,15 @@ extends layouts/main
 block content
     article.user-detail
         section.channel-info
-            img(src="/static/profile.png")
+            img(src=`/${loggedUser.avatarUrl}`)
             .metadata
                 .user-info-and-tabs
                     .user-info-and-btns
                         .user-info
-                            h3.name Rossa
+                            h3.name=loggedUser.name
                         ul.btns
                             li.btn
-                                a(href=`${routes.user}${routes.editProfile}`)
+                                a(href=routes.editProfile(loggedUser.id))
                                     span Edit Profile
                             li.btn
                                 a(href=`${routes.video}${routes.upload}`)
