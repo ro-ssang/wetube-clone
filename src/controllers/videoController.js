@@ -91,6 +91,16 @@ export const postEditVideo = async (req, res) => {
 };
 
 // Delete Video
-export const getDeleteVideo = (req, res) => {
-  res.send("Delete Vdieo Page");
+export const getDeleteVideo = async (req, res) => {
+  const {
+    params: { id: videoId },
+    user: { id: loggedUserId },
+  } = req;
+  try {
+    await Video.findByIdAndDelete(videoId);
+    res.redirect(routes.channelDetail(loggedUserId));
+  } catch (err) {
+    console.log(err);
+    res.redirect(routes.editProfile(videoId));
+  }
 };
