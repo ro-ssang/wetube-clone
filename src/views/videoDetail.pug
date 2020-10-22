@@ -1,4 +1,5 @@
 extends layouts/main
+include mixins/commentBlock
 
 block content
     article.video-detail
@@ -42,65 +43,20 @@ block content
                         button.more-btn More
             .horizontal-divider
             section.comments
-                form.comment-form#commentGenerator(action="#", method="#")
-                    .avatar-and-text
-                        img(src="/static/profile.png")
-                        input(type="text", name="comment", placeholder="Add your comment...", autocomplete="off")
-                    .btns.hidden
-                        button.cancel-btn Cancel
-                        input.submit-btn(type="submit", value="comment")
-                ul.commentors#commentors
-                    li.commentor
-                        .commentor-info
-                            a(href="#")
-                                img(src="/static/profile.png")
-                            .metadata-and-actions
-                                .metadata
-                                    .name-and-created-date
-                                        a(href="#")
-                                        span.name Nomad
-                                        span.created-date 1 month ago
-                                    span.comment This is Comment!!
-                                .actions
-                                    button
-                                        i.far.fa-heart
-                                        span 1K
-                                    button.reply reply
-                        button.more-btn
-                            i.fas.fa-ellipsis-v
-                    li.commentor
-                        .commentor-info
-                            a(href="#")
-                                img(src="/static/profile.png")
-                            .metadata-and-actions
-                                .metadata
-                                    .name-and-created-date
-                                        a(href="#")
-                                        span.name Nomad
-                                        span.created-date 1 month ago
-                                    span.comment This is Comment!!
-                                .actions
-                                    button
-                                        i.far.fa-heart
-                                        span 1K
-                                    button.reply reply
-                        button.more-btn
-                            i.fas.fa-ellipsis-v
-                    li.commentor
-                        .commentor-info
-                            a(href="#")
-                                img(src="/static/profile.png")
-                            .metadata-and-actions
-                                .metadata
-                                    .name-and-created-date
-                                        a(href="#")
-                                        span.name Nomad
-                                        span.created-date 1 month ago
-                                    span.comment This is Comment!!
-                                .actions
-                                    button
-                                        i.far.fa-heart
-                                        span 1K
-                                    button.reply reply
-                        button.more-btn
-                            i.fas.fa-ellipsis-v
+                h5.comment-count #{video.comments.length} Comments
+                if (loggedUser)
+                    form.comment-form#commentGenerator
+                        .avatar-and-text
+                            img#commentorData(src=loggedUser.avatarUrl, data-commentor-name=loggedUser.name, data-link=routes.channelDetail(loggedUser.id))
+                            input(type="text", placeholder="Add your comment...", autocomplete="off")
+                        .btns
+                            button.cancel-btn Cancel
+                            input.submit-btn(type="submit", value="comment")
+                ul.commentors#commentorList
+                    each comment in video.comments.reverse()
+                        +commentBlock({
+                            name: comment.commentor.name,
+                            avatarUrl: comment.commentor.avatarUrl,
+                            text: comment.comment,
+                            createdAt: comment.createdAt
+                        })

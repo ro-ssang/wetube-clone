@@ -1,0 +1,21 @@
+mixin commentBlock(comment = {})
+    li.commentor
+        .commentor-info
+            a(href="#")
+                img(src=comment.avatarUrl)
+            .metadata-and-actions
+                .metadata
+                    .name-and-created-date
+                        a(href="#")
+                            span.name=comment.name
+                        span.created-date=comment.createdAt
+                    span.comment=comment.text
+                .actions
+                    button
+                        i.far.fa-heart
+                        span 1K
+                    button.delete
+                        i.fas.fa-trash-alt
+                        span delete
+        button.more-btn
+            i.fas.fa-ellipsis-v

@@ -120,8 +120,13 @@
     }
     .comments {
       width: 100%;
+      margin-top: $marginMedium;
+      .comment-count {
+        font-size: $fontMedium;
+        letter-spacing: 0.5px;
+      }
       .comment-form {
-        margin-top: 10px;
+        margin-top: calc(#{$marginMedium} * 2);
         .avatar-and-text {
           display: flex;
           align-items: center;
@@ -166,7 +171,7 @@
         }
       }
       .commentors {
-        margin-top: calc(#{$marginLarge} * 2);
+        margin-top: calc(#{$marginLarge} * 1.5);
         .commentor {
           display: flex;
           justify-content: space-between;

@@ -9,6 +9,7 @@ import MongoStore from "connect-mongo";
 import mongoose from "mongoose";
 import passport from "passport";
 import { localsMiddleware } from "./middlewares";
+import apiRouter from "./routers/apiRouter";
 import channelRouter from "./routers/channelRouter";
 import globalRouter from "./routers/globalRouter";
 import userRouter from "./routers/userRouter";
@@ -36,6 +37,7 @@ app.use(
 );
 app.use(morgan("dev"));
 app.use(cookieParser());
+app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(
   session({
@@ -54,5 +56,6 @@ app.use(routes.home, globalRouter);
 app.use(routes.video, videoRouter);
 app.use(routes.user, userRouter);
 app.use(routes.channel, channelRouter);
+app.use(routes.api, apiRouter);
 
 export default app;

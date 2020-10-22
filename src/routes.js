@@ -30,6 +30,12 @@ const GITHUB_CALLBACK = "/auth/github/callback";
 const GOOGLE = "/auth/google";
 const GOOGLE_CALLBACK = "/auth/google/callback";
 
+// APIs
+const API = "/api";
+const ADD_COMMENT = "/:id/comment";
+const EDIT_COMMENT = "/:id/edit-comment";
+const DELETE_COMMENT = "/:id/delete-comment";
+
 const routes = {
   home: HOME,
   search: SEARCH,
@@ -72,6 +78,10 @@ const routes = {
   githubCallback: GITHUB_CALLBACK,
   google: GOOGLE,
   googleCallback: GOOGLE_CALLBACK,
+  api: API,
+  addComment: ADD_COMMENT,
+  editComment: EDIT_COMMENT,
+  deleteComment: DELETE_COMMENT,
 };
 
 export default routes;
