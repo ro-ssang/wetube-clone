@@ -43,7 +43,10 @@ block content
                         button.more-btn More
             .horizontal-divider
             section.comments
-                h5.comment-count #{video.comments.length} Comments
+                if (video.comments.length === 1)
+                    div.comment-count#jsCommentNumber #{video.comments.length} Comment
+                else
+                    div.comment-count#jsCommentNumber #{video.comments.length} Comments
                 if (loggedUser)
                     form.comment-form#commentGenerator
                         .avatar-and-text
@@ -55,6 +58,7 @@ block content
                 ul.commentors#commentorList
                     each comment in video.comments.reverse()
                         +commentBlock({
+                            id: comment.id,
                             name: comment.commentor.name,
                             avatarUrl: comment.commentor.avatarUrl,
                             text: comment.comment,

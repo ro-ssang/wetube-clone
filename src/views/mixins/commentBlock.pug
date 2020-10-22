@@ -1,5 +1,5 @@
 mixin commentBlock(comment = {})
-    li.commentor
+    li.commentor(data-comment-id=comment.id)
         .commentor-info
             a(href="#")
                 img(src=comment.avatarUrl)
@@ -14,8 +14,9 @@ mixin commentBlock(comment = {})
                     button
                         i.far.fa-heart
                         span 1K
-                    button.delete
+                    //- button.reply
+                    //-     span reply
+                    button.deleteBtn
                         i.fas.fa-trash-alt
-                        span delete
         button.more-btn
             i.fas.fa-ellipsis-v

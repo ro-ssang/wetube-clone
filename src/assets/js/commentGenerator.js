@@ -6,6 +6,42 @@ const cancelBtn = document.querySelector("#commentGenerator .btns .cancel-btn");
 const submitBtn = document.querySelector("#commentGenerator .btns .submit-btn");
 const commentorList = document.querySelector("#commentorList");
 const commentorData = document.querySelector("#commentorData");
+const deleteBtns = document.querySelectorAll(".deleteBtn");
+const commentNumber = document.getElementById("jsCommentNumber");
+
+const decreaseNumber = () => {
+  const number = parseInt(commentNumber.innerHTML, 10) - 1;
+  if (number === 1) {
+    commentNumber.innerHTML = `${number} Comment`;
+    return;
+  }
+  commentNumber.innerHTML = `${number} Comments`;
+};
+
+const sendCommentId = async (commentId, element) => {
+  const videoId = window.location.href.split("/video/")[1];
+  console.log(videoId);
+  const response = await axios({
+    url: `/api/${videoId}/delete-comment`,
+    method: "POST",
+    data: { commentId },
+  });
+  if (response.status === 200) {
+    element.remove();
+    decreaseNumber();
+  }
+};
+
+const clickDeleteBtn = (e) => {
+  const icon = e.target;
+  const delBtn = icon.parentNode;
+  const actions = delBtn.parentNode;
+  const metadataAndActions = actions.parentNode;
+  const commentorInfo = metadataAndActions.parentNode;
+  const li = commentorInfo.parentNode;
+  const commentId = li.dataset.commentId;
+  sendCommentId(commentId, li);
+};
 
 const paintComment = (comment) => {
   const li = document.createElement("li");
@@ -46,6 +82,15 @@ const paintComment = (comment) => {
   commentorList.prepend(li);
 };
 
+const increaseNumber = () => {
+  const number = parseInt(commentNumber.innerHTML, 10) + 1;
+  if (number === 1) {
+    commentNumber.innerHTML = `${number} Comment`;
+    return;
+  }
+  commentNumber.innerHTML = `${number} Comments`;
+};
+
 const sendComment = async (comment) => {
   const videoId = window.location.href.split("/video/")[1];
   const response = await axios({
@@ -55,6 +100,7 @@ const sendComment = async (comment) => {
   });
   if (response.status === 200) {
     paintComment(comment);
+    increaseNumber();
   }
 };
 
@@ -68,6 +114,9 @@ const handleCommentSubmit = (e) => {
 
 const init = () => {
   commentGenerator.addEventListener("submit", handleCommentSubmit);
+  deleteBtns.forEach((delBtn) => {
+    delBtn.addEventListener("click", clickDeleteBtn);
+  });
 };
 
 if (commentGenerator) {
