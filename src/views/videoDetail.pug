@@ -3,13 +3,13 @@ extends layouts/main
 block content
     article.video-detail
         section.video-player
-            video(src="/static/Big_Buck_Bunny_360_10s_1MB.mp4")
+            video(src=video.videoFile)
         .video-detail-metadata
             .video-info-and-channel-info
                 section.video-info
-                    span.title Video Title
+                    span.title=video.title
                     .views-and-actions
-                        span.views 1M views &#8901; 2020. 10. 10.
+                        span.views  #{video.views} views &#8901; #{video.createdAt}
                         ul.actions
                             li
                                 button
@@ -22,18 +22,20 @@ block content
                 .channel-and-description
                     section.channel
                         .creator
-                            a(href="#")
-                                img(src="/static/profile.png")
+                            a(href=routes.channelDetail(video.creator.id))
+                                img(src=video.creator.avatarUrl)
                             .metadata
-                                a.name(href="#")
-                                    span Rossa
+                                a.name(href=routes.channelDetail(video.creator.id))
+                                    span=video.creator.name
                                 span.subscribers 1M subscribers
                         ul.btns
-                            button.subscribe Subscribe
-                            button
-                                a(href=`${routes.video}${routes.editVideo}`) Edit video
+                            if (loggedUser.id !== video.creator.id)
+                                button.subscribe Subscribe
+                            else
+                                button
+                                    a(href=routes.editVideo(video.id)) Edit video
                     section.video-description
-                        span.description This is video description!!!
+                        span.description=video.description
                         button.more-btn More
             .horizontal-divider
             section.comments

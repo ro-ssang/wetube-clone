@@ -20,9 +20,15 @@ export const postUpload = async (req, res) => {
   const {
     body: { title, description },
     file: { path: videoFile },
+    user: { id: creatorId },
   } = req;
   try {
-    const newVideo = await Video.create({ videoFile, title, description });
+    const newVideo = await Video.create({
+      videoFile: `/${videoFile}`,
+      title,
+      description,
+      creator: creatorId,
+    });
     res.redirect(routes.videoDetail(newVideo.id));
   } catch (err) {
     console.lor(err);
@@ -31,13 +37,23 @@ export const postUpload = async (req, res) => {
 };
 
 // Video Detail
-export const getVideoDetail = (req, res) => {
-  res.render("videoDetail", { pageTitle: "Video Detail" });
+export const getVideoDetail = async (req, res) => {
+  const {
+    params: { id: videoId },
+  } = req;
+  try {
+    const video = await Video.findById(videoId).populate("creator");
+    res.render("videoDetail", { pageTitle: video.title, video });
+  } catch (err) {
+    console.log(err);
+    res.status(404);
+    res.render("404");
+  }
 };
 
 // Edit Video
 export const getEditVideo = (req, res) => {
-  res.render("editVideo", { pageTitle: "EditVideo" });
+  res.render("editVideo", { pageTitle: "Edit Video" });
 };
 
 // Delete Video
