@@ -29,11 +29,14 @@ block content
                                     span=video.creator.name
                                 span.subscribers 1M subscribers
                         ul.btns
-                            if (loggedUser.id !== video.creator.id)
-                                button.subscribe Subscribe
+                            if (loggedUser)
+                                if (loggedUser.id === video.creator.id)
+                                    button
+                                        a(href=routes.editVideo(video.id)) Edit video
+                                else
+                                    button.subscribe Subscribe
                             else
-                                button
-                                    a(href=routes.editVideo(video.id)) Edit video
+                                button.subscribe Subscribe
                     section.video-description
                         span.description=video.description
                         button.more-btn More

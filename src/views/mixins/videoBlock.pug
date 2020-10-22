@@ -1,0 +1,18 @@
+mixin videoBlock(video = {})
+    article.videoBlock
+            a(href=routes.videoDetail(video.id))
+                video(src=video.videoFile)
+            .metadata
+                a(href=routes.channelDetail(video.creator.id))
+                    img(src=video.creator.avatarUrl)
+                a(href=routes.videoDetail(video.id))
+                    .video-info
+                        h3.title=video.title
+                        span.name=video.creator.name
+                        .views-and-elapsed-time
+                            span.views
+                                i.fas.fa-eye
+                                |#{video.views} views
+                            span.elapsed-time
+                                i.fas.fa-undo-alt
+                                |#{video.createdAt}

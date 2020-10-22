@@ -2,8 +2,14 @@ import Video from "../models/Video";
 import routes from "../routes";
 
 // Home
-export const getHome = (req, res) => {
-  res.render("home", { pageTitle: "Home" });
+export const getHome = async (req, res) => {
+  try {
+    const videos = await Video.find({}).populate("creator");
+    res.render("home", { pageTitle: "Home", videos });
+  } catch (err) {
+    console.log(err);
+    res.render("home", { pageTitle: "Home", videos: [] });
+  }
 };
 
 // Search
@@ -21,6 +27,7 @@ export const postUpload = async (req, res) => {
     body: { title, description },
     file: { path: videoFile },
     user: { id: creatorId },
+    user: loggedUser,
   } = req;
   try {
     const newVideo = await Video.create({
@@ -29,6 +36,8 @@ export const postUpload = async (req, res) => {
       description,
       creator: creatorId,
     });
+    loggedUser.videos = newVideo.id;
+    loggedUser.save();
     res.redirect(routes.videoDetail(newVideo.id));
   } catch (err) {
     console.lor(err);
