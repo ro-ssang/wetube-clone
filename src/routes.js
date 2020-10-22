@@ -39,7 +39,12 @@ const routes = {
   channel: CHANNEL,
   video: VIDEO,
   upload: UPLOAD,
-  videoDetail: VIDEO_DATAIL,
+  videoDetail: (id) => {
+    if (id) {
+      return `${routes.video}/${id}`;
+    }
+    return VIDEO_DATAIL;
+  },
   editVideo: EDIT_VIDEO,
   deleteVideo: DELETE_VIDEO,
   user: USER,

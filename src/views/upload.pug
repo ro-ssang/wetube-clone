@@ -8,7 +8,7 @@ block content
                 p.description
                     |Welcome to WeTube!<br>
                     |You can sign up with our site by filling out the form or using social login.
-            form.form-container#jsForm(action="#", method="#")
+            form.form-container#jsForm(action=`${routes.video}${routes.upload}`, method="post", enctype="multipart/form-data")
                 .input-container
                     h5.title Video File
                     span.msg.hidden message
